@@ -34,11 +34,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Command.h" />
 		<Unit filename="include/Math.h" />
 		<Unit filename="include/Operations.h" />
+		<Unit filename="include/Stack.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Command.cpp" />
 		<Unit filename="src/Math.cpp" />
 		<Unit filename="src/Operations.cpp" />
+		<Unit filename="src/Stack.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

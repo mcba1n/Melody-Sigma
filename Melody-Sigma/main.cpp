@@ -1,17 +1,16 @@
 #include <iostream>
 #include <Operations.h>
+#include <Command.h>
 
 using namespace std;
 
 int main()
 {
-    // this will be done using class Command later
+    // example command
+    string cmd = "5*(4+3*2)+1";
 
-    Operations std_ops;
-    double result;
-
-    result = std_ops.add(10, 20);
-    cout << "The result is " << result << endl;
+    Command myCommand(cmd);
+    cout << "Your command result: " << myCommand.get_result() << endl;
 
     return 0;
 }

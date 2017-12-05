@@ -1,16 +1,31 @@
 # depslib dependency file v1.0
-1512475124 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+1512515827 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Operations.h>
+	<Command.h>
 
-1512474038 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math.cpp
+1512475286 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math.cpp
 	"Math.h"
+	<iostream>
 
 1512474038 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math.h
 
-1512474584 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
+1512513345 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
 	"Operations.h"
 
-1512474491 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\operations.h
+1512513345 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
+
+1512515664 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
+	"Command.h"
+
+1512516437 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
+	<iostream>
+	<Stack.h>
+
+1512513868 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\stack.h
+
+1512516460 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
+	"Stack.h"
+	<iostream>
 
