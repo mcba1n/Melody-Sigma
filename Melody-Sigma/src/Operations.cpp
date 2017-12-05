@@ -9,7 +9,8 @@ Operations::~Operations()
 {
     //dtor
 }
-
+double e = 2.71828;
+double pi = 3.14159;
 // basic operations here
 
 double Operations::add(double a, double b)
@@ -35,6 +36,26 @@ int Operations::factorial(int a){
     }
     return result;
 }
+
+int Operations::floor(double a){
+    return a/1;
+}
+
+int Operations::ceil(double a){
+   int result;
+   if(floor(a) == a) //check if integer
+        result = a;
+    else
+        result = floor(a)+1;
+    return result;
+}
+
+double Operations::log(double base, double n){
+    return 0;
+}
+
+// advanced operations here
+
 bool Operations::isLeapYear(int year){
     bool result;
     if(year % 4 == 0){ //first condition
@@ -49,7 +70,17 @@ bool Operations::isLeapYear(int year){
     return result;
     }
 
+int Operations::fibonacci(int n){
+    int result;
+    if(n == 1 || n == 2)
+        result = 1;
+    else
+        result = fibonacci(n-1)+fibonacci(n-2);
+    return result;
+}
 
+bool Operations::palindrome(int n){
+    return 0;
+}
 
-// advanced operations here
 

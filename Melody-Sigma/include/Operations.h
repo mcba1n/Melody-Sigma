@@ -16,6 +16,11 @@ class Operations : public Math
         double divide(double a, double b);
         int factorial(int a);
         bool isLeapYear(int year);
+        int fibonacci(int n);
+        int floor(double n);
+        int ceil(double n);
+        bool palindrome(int n);
+        double log (double base, double n);
 
     protected:
 
