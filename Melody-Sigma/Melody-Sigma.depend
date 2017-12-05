@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1512475124 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+	<iostream>
+	<Operations.h>
+
+1512474038 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math.cpp
+	"Math.h"
+
+1512474038 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math.h
+
+1512474584 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
+	"Operations.h"
+
+1512474491 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\operations.h
+	<Math.h>
+
