@@ -29,3 +29,40 @@
 	"Stack.h"
 	<iostream>
 
+1512554463 source:d:\github\melody-sigma\melody-sigma\main.cpp
+	<iostream>
+	<Operations.h>
+	<Command.h>
+	<queue.h>
+
+1512552659 d:\github\melody-sigma\melody-sigma\include\operations.h
+	<Math.h>
+
+1512552659 d:\github\melody-sigma\melody-sigma\include\math.h
+
+1512552659 d:\github\melody-sigma\melody-sigma\include\command.h
+	<iostream>
+	<Stack.h>
+
+1512552659 d:\github\melody-sigma\melody-sigma\include\stack.h
+
+1512554618 d:\github\melody-sigma\melody-sigma\include\queue.h
+	<iostream>
+
+1512552659 source:d:\github\melody-sigma\melody-sigma\src\command.cpp
+	"Command.h"
+
+1512552659 source:d:\github\melody-sigma\melody-sigma\src\math.cpp
+	"Math.h"
+	<iostream>
+
+1512552659 source:d:\github\melody-sigma\melody-sigma\src\operations.cpp
+	"Operations.h"
+
+1512552659 source:d:\github\melody-sigma\melody-sigma\src\queue.cpp
+	"queue.h"
+
+1512552659 source:d:\github\melody-sigma\melody-sigma\src\stack.cpp
+	"Stack.h"
+	<iostream>
+

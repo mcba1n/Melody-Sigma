@@ -38,11 +38,13 @@
 		<Unit filename="include/Math.h" />
 		<Unit filename="include/Operations.h" />
 		<Unit filename="include/Stack.h" />
+		<Unit filename="include/queue.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
 		<Unit filename="src/Math.cpp" />
 		<Unit filename="src/Operations.cpp" />
 		<Unit filename="src/Stack.cpp" />
+		<Unit filename="src/queue.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
