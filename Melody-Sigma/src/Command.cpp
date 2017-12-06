@@ -1,4 +1,5 @@
 #include "Command.h"
+#include "Operations.h"
 
 Command::Command(std::string cmd)
 {
@@ -18,6 +19,7 @@ int Command::get_result() {
 
 int Command::evaluate_postfix(std::string postfix_string) {
     Stack op_stack;
+    Operations ops;
     char curr_char;
 
     for (int i = 0; i < postfix_string.size(); i++) {
@@ -32,15 +34,23 @@ int Command::evaluate_postfix(std::string postfix_string) {
         // apply the operator
         else if (op_stack.size() >= 2) {
                 int num1 = op_stack.pop();
-                int num2 = op_stack.pop();
-
-                // check which operator we have
-                if(curr_char == '+') {
-                    op_stack.push(num1 + num2);
-                } else if(curr_char == '*') {
-                    op_stack.push(num1*num2);
+                // check which operator we have and pop the rest of the numbers should we need it
+                if(curr_char == '+'){
+                    int num2 = op_stack.pop();
+                    op_stack.push(ops.add(num1,num2));
+                }else if(curr_char == '*'){
+                    int num2 = op_stack.pop();
+                    op_stack.push(ops.multiply(num1,num2));
+                }else if(curr_char == '/'){
+                    int num2 = op_stack.pop();
+                    op_stack.push(ops.multiply(num1,num2));
+                }else if(curr_char == '-'){
+                    int num2 = op_stack.pop();
+                    op_stack.push(ops.substract(num1,num2));
+                }else if(curr_char == '!')
+                    op_stack.push(ops.factorial(num1));
                 // add more here
-                } else {
+                 else {
                     std::cout << "Invalid operator found" << std::endl;
                     return -1;
                 }
@@ -126,6 +136,8 @@ bool Command::is_operand(char operand) {
 }
 
 int Command::precedence(char op) {
+    if(op == '!')
+        return 4;
     if(op == '^')
         return 3;
     else if(op == '*' || op == '/')
