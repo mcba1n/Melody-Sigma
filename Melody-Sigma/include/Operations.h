@@ -2,7 +2,7 @@
 #define OPERATIONS_H
 
 #include <Math.h>
-
+#include "Complex.h"
 
 class Operations : public Math
 {
@@ -11,9 +11,14 @@ class Operations : public Math
         virtual ~Operations();
 
         double add(double a, double b);
+        Complex add(Complex a, Complex b);
         double substract(double a, double b);
+        Complex substract(Complex a, Complex b);
         double multiply(double a, double b);
+        Complex multiply(Complex a, Complex b);
         double divide(double a, double b);
+        Complex divide(Complex a, Complex b);
+        Complex conjugate(Complex c);
         int factorial(int a);
         bool isLeapYear(int year);
         int fibonacci(int n);

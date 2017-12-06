@@ -1,4 +1,5 @@
 #include "Operations.h"
+#include "Complex.h"
 
 Operations::Operations()
 {
@@ -17,14 +18,57 @@ double Operations::add(double a, double b)
 {
     return a + b;
 }
+
+Complex Operations::add(Complex a, Complex b){
+    Complex result;
+    result.setReal(a.getReal()+b.getReal());
+    result.setImag(a.getImag()+b.getImag());
+    return result;
+}
+
 double Operations::substract(double a, double b){
     return a-b;
 }
+Complex Operations::substract(Complex a, Complex b){
+    Complex result;
+    result.setReal(a.getReal()-b.getReal());
+    result.setImag(a.getImag()-b.getImag());
+    return result;
+}
+
 double Operations::multiply(double a, double b){
     return a*b;
 }
+
+Complex Operations::multiply(Complex a, Complex b){
+    Complex result;
+    double real = a.getReal()*b.getReal()-a.getImag()*b.getImag();
+    double imag = a.getReal()*b.getImag()+a.getImag()*b.getReal();
+    result.setReal(real);
+    result.setImag(imag);
+    return result;
+}
+
 double Operations::divide(double a, double b){
     return a/b;
+}
+
+Complex Operations::divide(Complex a, Complex b){
+    Complex result;
+    Complex bconjugate = conjugate(b);
+    double denominator = multiply(b,bconjugate).getReal();
+    Complex numerator = multiply(a,bconjugate);
+    numerator.printComplex();
+    result.setReal(numerator.getReal()/denominator);
+    result.setImag(numerator.getImag()/denominator);
+    return result;
+}
+
+Complex Operations::conjugate(Complex c){
+    Complex result;
+    result.setReal(c.getReal());
+    result.setImag(-c.getImag());
+    return result;
 }
 
 int Operations::factorial(int a){
