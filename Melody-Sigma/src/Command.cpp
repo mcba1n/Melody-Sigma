@@ -1,11 +1,18 @@
 #include "Command.h"
-#include "Operations.h"
 
-Command::Command(std::string cmd)
+Command::Command(std::string cmd, int md)
 {
-    std::string postfix = infix_to_postfix(cmd);
-    std::cout << "Postfix expression: " << postfix << std::endl;
-    result = evaluate_postfix(postfix);
+    mode = md;  // set the mode
+    if (mode == REAL) {
+        std::string cmd_consts = evaluate_constants(cmd);
+        std::string postfix = infix_to_postfix(cmd_consts);
+        result = evaluate_postfix(postfix);
+    } else if (mode == COMPLEX) {
+    } else if (mode == POLY) {
+    } else if (mode == MATRIX) {
+    } else {
+        std::cout << "Invalid command mode" << std::endl;
+    }
 }
 
 Command::~Command()
@@ -13,12 +20,40 @@ Command::~Command()
     //dtor
 }
 
-int Command::get_result() {
+// convert names of constants into their values for a given string
+std::string Command::evaluate_constants(std::string c_string) {
+    Math math;
+    std::string c_string_constants;
+
+    // convert constants into strings
+    char pi_string[10], e_string[10];
+    sprintf(pi_string, "%f", math.pi);
+    sprintf(e_string, "%f", math.e);
+
+    // replace for the constants
+    c_string_constants = replace_string(c_string, PI, pi_string);
+    c_string_constants = replace_string(c_string_constants, E, e_string);
+
+    return c_string_constants;
+}
+
+// find and replace all instances of the needle
+std::string Command::replace_string(std::string subject, const std::string& search,
+                          const std::string& replace) {
+    size_t pos = 0;
+    while ((pos = subject.find(search, pos)) != std::string::npos) {
+         subject.replace(pos, search.length(), replace);
+         pos += replace.length();
+    }
+    return subject;
+}
+
+double Command::get_result() {
     return result;
 }
 
-int Command::evaluate_postfix(std::string postfix_string) {
-    Stack op_stack;
+double Command::evaluate_postfix(std::string postfix_string) {
+    Stack<double> op_stack;
     Operations ops;
     char curr_char;
 
@@ -27,35 +62,39 @@ int Command::evaluate_postfix(std::string postfix_string) {
 
         // if the token is an operand (number), push it on the stack
         if (is_operand(curr_char)) {
-            int item = curr_char - '0';     // convert ASCII to integer
+            int op_len = operand_length(i, postfix_string);
+            std::string op_substr = postfix_string.substr(i, op_len);   // find the operand string
+            i += op_len;                                                // jump past this substring in the loop
+
+            double item = atof(op_substr.c_str());                      // convert ASCII subtr to double
             op_stack.push(item);
         }
 
         // apply the operator
         else if (op_stack.size() >= 2) {
-                int num1 = op_stack.pop();
-                // check which operator we have and pop the rest of the numbers should we need it
+                // operators with two arguments:
+                double num1 = op_stack.pop();
+                double num2 = op_stack.pop();
+
                 if(curr_char == '+'){
-                    int num2 = op_stack.pop();
                     op_stack.push(ops.add(num1,num2));
                 }else if(curr_char == '*'){
-                    int num2 = op_stack.pop();
                     op_stack.push(ops.multiply(num1,num2));
                 }else if(curr_char == '/'){
-                    int num2 = op_stack.pop();
                     op_stack.push(ops.multiply(num1,num2));
                 }else if(curr_char == '-'){
-                    int num2 = op_stack.pop();
                     op_stack.push(ops.substract(num1,num2));
-                }else if(curr_char == '!')
-                    op_stack.push(ops.factorial(num1));
-                // add more here
-                 else {
-                    std::cout << "Invalid operator found" << std::endl;
-                    return -1;
                 }
-        } else {
-            std::cout << "Invalid number of arguments" << std::endl;
+        }
+        else if (op_stack.size() >= 1) {
+            // operators with one argument:
+            double num1 = op_stack.pop();
+            if(curr_char == '!') {
+                op_stack.push(ops.factorial(num1));
+            }
+        }
+        else {
+            std::cout << "Invalid expression" << std::endl;
             return -1;
         }
     }
@@ -70,7 +109,7 @@ int Command::evaluate_postfix(std::string postfix_string) {
 }
 
 std::string Command::infix_to_postfix(std::string infix_string) {
-    Stack op_stack;
+    Stack<char> op_stack;
     std::string postfix;
     char curr_char, top_item;
 
@@ -79,9 +118,16 @@ std::string Command::infix_to_postfix(std::string infix_string) {
         if (!op_stack.is_empty())   top_item = op_stack.get_top_item();
         else top_item = NULL;
 
+        // ignore the operand delim
+        if (curr_char == '\\') continue;
+
         // print operands as they arrive
         if (is_operand(curr_char)) {
-            postfix.push_back(curr_char);
+            int op_len = operand_length(i, infix_string);
+            std::string op_substr = infix_string.substr(i, op_len);     // find the operand string
+            std::string op_substr_delim = op_substr.append("\\");       // add delimeter to separate operands
+            postfix.append(op_substr_delim);
+            i += op_len - 1;                                            // jump past this substring in the loop
             continue;
         }
 
@@ -125,6 +171,15 @@ std::string Command::infix_to_postfix(std::string infix_string) {
         }
     }
     return postfix;
+}
+
+int Command::operand_length(int pos, std::string c_string) {
+    int len = 0;
+    while (is_operand(c_string[pos]) || c_string[pos] == '.') {
+        pos++;
+        len++;
+    }
+    return len;
 }
 
 bool Command::is_operand(char operand) {

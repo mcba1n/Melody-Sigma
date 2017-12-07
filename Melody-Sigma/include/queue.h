@@ -1,10 +1,10 @@
 #include<iostream>
 #define MAX 99999
-class queue1
+class Queue
 {
     public:
-        queue1();
-        ~queue1();
+        Queue();
+        ~Queue();
         void insertion(int ITEM);
         void deletion();
         void traverse();

@@ -1,15 +1,15 @@
 #include"queue.h"
 using namespace std;
 
-queue1::queue1()
+Queue::Queue()
 {
     FRONT=-1;
     REAR=-1;
 }
-queue1::~queue1()
+Queue::~Queue()
 {
 }
-void queue1::insertion(int ITEM){
+void Queue::insertion(int ITEM){
     if(REAR>=(MAX-1)){
         cout<<"Overflow! Queue is full!\n";
         return;
@@ -20,7 +20,7 @@ void queue1::insertion(int ITEM){
     QUE[REAR]=ITEM;
 
 }
-void queue1::deletion(){
+void Queue::deletion(){
     int ITEM;//stores the value of deleted item
     if(FRONT==-1&&REAR==-1){
         cout<<"Underflow! Queue is empty!\n";
@@ -33,7 +33,7 @@ void queue1::deletion(){
         FRONT=FRONT+1;
     cout<<"Deleted element is: "<<ITEM<<"\n";
 }
-void queue1::traverse(){
+void Queue::traverse(){
     if(FRONT==-1&&REAR==-1){
         cout<<"Queue is empty!";
         return;

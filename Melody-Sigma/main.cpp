@@ -1,15 +1,11 @@
 #include <iostream>
 #include <Operations.h>
 #include <Command.h>
-#include <queue.h>
-#include <linkedlist.h>
-#include <complex.h>
+#include <Complex.h>
 using namespace std;
 
 int main()
 {
-    // example command
-    string cmd = "4*2+4!";
     Operations ops;
     Complex complex1= Complex(20,-4);
     Complex complex2 = Complex(3,2);
@@ -23,8 +19,11 @@ int main()
     mult.printComplex();
     div.printComplex();
     conj.printComplex();
-    Command myCommand(cmd);
+
+    // example command
+    string cmd = "PI*(4*2+2!)";
+    Command myCommand(cmd, REAL);
     cout << "Your command result: " << myCommand.get_result() << endl;
-    //queue operations
+
     return 0;
 }

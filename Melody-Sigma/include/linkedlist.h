@@ -1,9 +1,10 @@
 #include<iostream>
-class linkedlist
+
+class LinkedList
 {
     public:
-        linkedlist();
-        ~linkedlist();
+        LinkedList();
+        ~LinkedList();
         void insertbeg(int);
         void insertend(int);
         //void insertloc(int, int);
@@ -11,12 +12,14 @@ class linkedlist
         void deleteend();
         //void deleteloc(int);
         void traverse();
+
     private:
-        struct list1{
-        int data;
-        struct list1 *next;
+        struct list1 {
+            int data;
+            struct list1 *next;
         };
         struct list1 *start;
+
     protected:
 
 

@@ -10,8 +10,7 @@ Operations::~Operations()
 {
     //dtor
 }
-double e = 2.71828;
-double pi = 3.14159;
+
 // basic operations here
 
 double Operations::add(double a, double b)
@@ -72,13 +71,8 @@ Complex Operations::conjugate(Complex c){
 }
 
 int Operations::factorial(int a){
-    int result;
-    if(a == 0 || a == 1)
-        result = 1;
-    else{
-        result = a*Operations::factorial(a-1);
-    }
-    return result;
+    if(a == 0 || a == 1) return 1;
+    else return a*factorial(a-1);
 }
 
 int Operations::floor(double a){

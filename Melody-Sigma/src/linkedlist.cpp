@@ -3,13 +3,13 @@
 #include "linkedlist.h"
 using namespace std;
 
-linkedlist::linkedlist(){
+LinkedList::LinkedList(){
     start=NULL;
 }
-linkedlist::~linkedlist(){
+LinkedList::~LinkedList(){
 
 }
-void linkedlist::insertbeg(int item){
+void LinkedList::insertbeg(int item){
     struct list1 *node;
     node=(struct list1 *)malloc(sizeof(struct list1));
     node->data=item;
@@ -21,7 +21,7 @@ void linkedlist::insertbeg(int item){
         start=node;
     }
 }
-void linkedlist::insertend(int item){
+void LinkedList::insertend(int item){
     struct list1 *node, *temp;
     node=(struct list1 *)malloc(sizeof(struct list1));
     node->data=item;
@@ -37,7 +37,7 @@ void linkedlist::insertend(int item){
     }
 
 }
-void linkedlist::deletebeg(){
+void LinkedList::deletebeg(){
     int item; //to store the deleted item
     struct list1 *temp; //to free up the deleted node space
     temp=start;
@@ -52,7 +52,7 @@ void linkedlist::deletebeg(){
         cout<<"\nDeleted element is: "<<item<<"\n";
     }
 }
-void linkedlist::deleteend(){
+void LinkedList::deleteend(){
     int item;
     struct list1 *temp, *temp1; //temp1 will point to the second last node
     temp=start;
@@ -78,7 +78,7 @@ void linkedlist::deleteend(){
     }
 }
 /*
-void linkedlist::insertloc(int item, int loc){
+void LinkedList::insertloc(int item, int loc){
     struct list1 *node, *temp;
     temp=start;
     node=(struct list1 *)malloc(sizeof(struct list1));
@@ -100,7 +100,7 @@ void linkedlist::insertloc(int item, int loc){
     }//outer else close
 }//function close
 
-void linkedlist::deleteloc(int loc){
+void LinkedList::deleteloc(int loc){
     int item;//to hold the deleted item
     struct list *temp1, *temp;//temp1 will point to the node which is one place before the temp pointed node
     temp=start;
@@ -130,7 +130,7 @@ void linkedlist::deleteloc(int loc){
     }
 }
 */
-void linkedlist::traverse(){
+void LinkedList::traverse(){
     struct list1 *temp;
     temp=start;
     if(start==NULL){
