@@ -36,48 +36,54 @@
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1512568340 source:d:\github\melody-sigma\melody-sigma\main.cpp
+1512631296 source:d:\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Operations.h>
 	<Command.h>
-	<queue.h>
-	<linkedlist.h>
+	<Complex.h>
+	<Poly.h>
 
-1512554983 d:\github\melody-sigma\melody-sigma\include\operations.h
+1512624275 d:\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
+	"Complex.h"
 
-1512554983 d:\github\melody-sigma\melody-sigma\include\math.h
+1512624275 d:\github\melody-sigma\melody-sigma\include\math.h
 
-1512554983 d:\github\melody-sigma\melody-sigma\include\command.h
+1512629880 d:\github\melody-sigma\melody-sigma\include\command.h
 	<iostream>
 	<Stack.h>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<Operations.h>
+	<Math.h>
 
-1512554983 d:\github\melody-sigma\melody-sigma\include\stack.h
-
-1512554983 d:\github\melody-sigma\melody-sigma\include\queue.h
+1512624275 d:\github\melody-sigma\melody-sigma\include\stack.h
 	<iostream>
 
-1512554983 source:d:\github\melody-sigma\melody-sigma\src\command.cpp
+1512624275 d:\github\melody-sigma\melody-sigma\include\queue.h
+	<iostream>
+
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\command.cpp
 	"Command.h"
 
-1512554983 source:d:\github\melody-sigma\melody-sigma\src\math.cpp
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\math.cpp
 	"Math.h"
 	<iostream>
 
-1512554984 source:d:\github\melody-sigma\melody-sigma\src\operations.cpp
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\operations.cpp
 	"Operations.h"
+	"Complex.h"
 
-1512554984 source:d:\github\melody-sigma\melody-sigma\src\queue.cpp
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\queue.cpp
 	"queue.h"
 
-1512554984 source:d:\github\melody-sigma\melody-sigma\src\stack.cpp
-	"Stack.h"
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\stack.cpp
+
+1512624275 d:\github\melody-sigma\melody-sigma\include\linkedlist.h
 	<iostream>
 
-1512569055 d:\github\melody-sigma\melody-sigma\include\linkedlist.h
-	<iostream>
-
-1512569092 source:d:\github\melody-sigma\melody-sigma\src\linkedlist.cpp
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\linkedlist.cpp
 	<iostream>
 	<stdlib.h>
 	"linkedlist.h"
@@ -100,5 +106,19 @@
 
 1512609106 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
 	"Complex.h"
+	<iostream>
+
+1512624275 d:\github\melody-sigma\melody-sigma\include\complex.h
+
+1512624275 source:d:\github\melody-sigma\melody-sigma\src\complex.cpp
+	"Complex.h"
+	<iostream>
+
+1512631228 source:d:\github\melody-sigma\melody-sigma\src\poly.cpp
+	<iostream>
+	<stdlib.h>
+	"poly.h"
+
+1512629995 d:\github\melody-sigma\melody-sigma\include\poly.h
 	<iostream>
 

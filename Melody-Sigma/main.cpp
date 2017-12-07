@@ -2,6 +2,7 @@
 #include <Operations.h>
 #include <Command.h>
 #include <Complex.h>
+#include <Poly.h>
 using namespace std;
 
 int main()
@@ -24,6 +25,13 @@ int main()
     string cmd = "2!+5 +(e+2*PI)*10 +7^2";
     Command myCommand(cmd, REAL);
     cout << "Your command result: " << myCommand.get_result() << endl;
+    cout<<"\n";
+    //polynomial test
+    system("cls");
+    Poly obj;
+    obj.first();
+    obj.second();
+    obj.addpoly();
 
     return 0;
 }
