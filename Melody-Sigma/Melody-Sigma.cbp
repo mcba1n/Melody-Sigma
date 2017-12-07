@@ -41,6 +41,7 @@
 		<Unit filename="include/Operations.h" />
 		<Unit filename="include/Poly.h" />
 		<Unit filename="include/Stack.h" />
+		<Unit filename="include/TowerOfHanoi.h" />
 		<Unit filename="include/queue.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
@@ -50,6 +51,7 @@
 		<Unit filename="src/Operations.cpp" />
 		<Unit filename="src/Poly.cpp" />
 		<Unit filename="src/Stack.cpp" />
+		<Unit filename="src/TowerOfHanoi.cpp" />
 		<Unit filename="src/queue.cpp" />
 		<Extensions>
 			<code_completion />

@@ -3,6 +3,7 @@
 #include <Command.h>
 #include <Complex.h>
 #include <Poly.h>
+#include <TowerOfHanoi.h>
 using namespace std;
 
 int main()
@@ -28,10 +29,12 @@ int main()
     cout<<"\n";
     //polynomial test
     system("cls");
-    Poly obj;
+    /*Poly obj;
     obj.first();
     obj.second();
     obj.addpoly();
-
+    */
+    TowerOfHanoi obj;
+    obj.tower(4, 'A', 'B', 'C');
     return 0;
 }

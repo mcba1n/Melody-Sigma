@@ -36,12 +36,13 @@
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1512631296 source:d:\github\melody-sigma\melody-sigma\main.cpp
+1512662128 source:d:\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Operations.h>
 	<Command.h>
 	<Complex.h>
 	<Poly.h>
+	<TowerOfHanoi.h>
 
 1512624275 d:\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
@@ -114,11 +115,18 @@
 	"Complex.h"
 	<iostream>
 
-1512631228 source:d:\github\melody-sigma\melody-sigma\src\poly.cpp
+1512631790 source:d:\github\melody-sigma\melody-sigma\src\poly.cpp
 	<iostream>
 	<stdlib.h>
 	"poly.h"
 
 1512629995 d:\github\melody-sigma\melody-sigma\include\poly.h
 	<iostream>
+
+1512662106 d:\github\melody-sigma\melody-sigma\include\towerofhanoi.h
+	<iostream>
+
+1512662319 source:d:\github\melody-sigma\melody-sigma\src\towerofhanoi.cpp
+	<iostream>
+	"TowerOfHanoi.h"
 
