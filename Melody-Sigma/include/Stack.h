@@ -42,7 +42,7 @@ void Stack<T>::push(T item) {
         top++;
         arr[top] = item;
     } else {
-        std::cout << "Error: stack is full" << std::endl;
+        // stack is full
     }
 }
 
@@ -54,7 +54,7 @@ T Stack<T>::pop() {
         top--;
         return item;
     } else {
-        std::cout << "Error: no items in stack" << std::endl;
+        // no items in stack
         return -1;
     }
 }
@@ -75,7 +75,7 @@ T Stack<T>::get_top_item() {
     if (!is_empty()) {
         return arr[top];
     } else {
-        std::cout << "Error: stack is empty" << std::endl;
+        // stack is empty
         return -1;
     }
 }

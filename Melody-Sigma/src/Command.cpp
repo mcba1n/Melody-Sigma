@@ -2,10 +2,12 @@
 
 Command::Command(std::string cmd, int md)
 {
-    mode = md;  // set the mode
+    std::string cmd_stripped = replace_string(cmd, " ", "");     // strip the white spaces
+    mode = md;                                                   // set the mode
     if (mode == REAL) {
-        std::string cmd_consts = evaluate_constants(cmd);
+        std::string cmd_consts = evaluate_constants(cmd_stripped);
         std::string postfix = infix_to_postfix(cmd_consts);
+        std::cout << "postfix exp: " << postfix << std::endl;
         result = evaluate_postfix(postfix);
     } else if (mode == COMPLEX) {
     } else if (mode == POLY) {
@@ -71,31 +73,38 @@ double Command::evaluate_postfix(std::string postfix_string) {
         }
 
         // apply the operator
-        else if (op_stack.size() >= 2) {
+        if (op_stack.size() >= 2) {
                 // operators with two arguments:
-                double num1 = op_stack.pop();
-                double num2 = op_stack.pop();
-
+                double num1, num2;
                 if(curr_char == '+'){
+                    num1 = op_stack.pop();
+                    num2 = op_stack.pop();
                     op_stack.push(ops.add(num1,num2));
                 }else if(curr_char == '*'){
+                    num1 = op_stack.pop();
+                    num2 = op_stack.pop();
                     op_stack.push(ops.multiply(num1,num2));
                 }else if(curr_char == '/'){
-                    op_stack.push(ops.multiply(num1,num2));
+                    num1 = op_stack.pop();
+                    num2 = op_stack.pop();
+                    op_stack.push(ops.divide(num2,num1));
                 }else if(curr_char == '-'){
-                    op_stack.push(ops.substract(num1,num2));
+                    num1 = op_stack.pop();
+                    num2 = op_stack.pop();
+                    op_stack.push(ops.substract(num2,num1));
+                }else if (curr_char == '^') {
+                    num1 = op_stack.pop();
+                    num2 = op_stack.pop();
+                    op_stack.push(ops.exponent(num2, num1));
                 }
         }
-        else if (op_stack.size() >= 1) {
+        if (op_stack.size() >= 1) {
             // operators with one argument:
-            double num1 = op_stack.pop();
+            double num1;
             if(curr_char == '!') {
+                num1 = op_stack.pop();
                 op_stack.push(ops.factorial(num1));
             }
-        }
-        else {
-            std::cout << "Invalid expression" << std::endl;
-            return -1;
         }
     }
 
@@ -111,12 +120,10 @@ double Command::evaluate_postfix(std::string postfix_string) {
 std::string Command::infix_to_postfix(std::string infix_string) {
     Stack<char> op_stack;
     std::string postfix;
-    char curr_char, top_item;
+    char curr_char;
 
     for (int i = 0; i < infix_string.size(); i++) {
         curr_char = infix_string[i];
-        if (!op_stack.is_empty())   top_item = op_stack.get_top_item();
-        else top_item = NULL;
 
         // ignore the operand delim
         if (curr_char == '\\') continue;
@@ -133,23 +140,28 @@ std::string Command::infix_to_postfix(std::string infix_string) {
 
         // if the stack is empty or contains left parenthesis on top, push the incoming operator onto the stack
         // if the incoming symbol is a left parenthesis, push it on the stack
-        if (op_stack.is_empty() || top_item == '(' || curr_char == '(') {
+        if (curr_char == '(') {
             op_stack.push(curr_char);
         }
 
         // if the incoming symbol is a right parenthesis, pop the stack and print the operators until you see a left parenthesis
         else if (curr_char == ')') {
-            char temp_char;
-            while (true) {
-                temp_char = op_stack.pop();
-                if (temp_char == '(') break;
-                else postfix.push_back(temp_char);
+            while (op_stack.get_top_item() != -1 && op_stack.get_top_item() != '(') {
+                char c = op_stack.get_top_item();
+                op_stack.pop();
+                postfix.push_back(c);
+            }
+
+            // now remove the left bracket
+            if (op_stack.get_top_item() == '(') {
+                char c = op_stack.get_top_item();
+                op_stack.pop();
             }
         }
 
         // if an operator is scanned
         else {
-            while(!op_stack.is_empty() && precedence(curr_char) <= precedence(top_item))
+            while(op_stack.get_top_item() != -1 && precedence(curr_char) <= precedence(op_stack.get_top_item()))
             {
                 char c = op_stack.get_top_item();
                 op_stack.pop();
@@ -160,15 +172,10 @@ std::string Command::infix_to_postfix(std::string infix_string) {
     }
 
     // at the end of the expression, pop and print all operators on the stack
-    while (!op_stack.is_empty()) {
-        char temp_char = op_stack.pop();
-        postfix.push_back(temp_char);
-
-        // no parentheses should remain
-        if (temp_char == ')' || temp_char == '(') {
-            std::cout << "Bracket error" << std::endl;
-            return NULL;
-        }
+    while (op_stack.get_top_item() != -1) {
+        char c = op_stack.get_top_item();
+        op_stack.pop();
+        postfix.push_back(c);
     }
     return postfix;
 }
@@ -193,7 +200,7 @@ bool Command::is_operand(char operand) {
 int Command::precedence(char op) {
     if(op == '!')
         return 4;
-    if(op == '^')
+    else if(op == '^')
         return 3;
     else if(op == '*' || op == '/')
         return 2;

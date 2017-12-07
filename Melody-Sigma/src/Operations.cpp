@@ -88,6 +88,16 @@ int Operations::ceil(double a){
     return result;
 }
 
+double Operations::exponent(double base, int power) {
+    if (power == 0) {
+        return 1;
+    } else if (power == 1) {
+        return base;
+    } else {
+        return base*exponent(base, power-1);
+    }
+}
+
 double Operations::log(double base, double n){
     return 0;
 }

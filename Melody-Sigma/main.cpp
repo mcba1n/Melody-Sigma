@@ -21,7 +21,7 @@ int main()
     conj.printComplex();
 
     // example command
-    string cmd = "PI*(4*2+2!)";
+    string cmd = "2!+5 +(e+2*PI)*10 +7^2";
     Command myCommand(cmd, REAL);
     cout << "Your command result: " << myCommand.get_result() << endl;
 
