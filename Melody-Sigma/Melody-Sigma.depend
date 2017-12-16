@@ -36,13 +36,14 @@
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1512662128 source:d:\github\melody-sigma\melody-sigma\main.cpp
+1513411525 source:d:\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Operations.h>
 	<Command.h>
 	<Complex.h>
 	<Poly.h>
 	<TowerOfHanoi.h>
+	<InsertionSort.h>
 
 1512624275 d:\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
@@ -129,4 +130,11 @@
 1512662319 source:d:\github\melody-sigma\melody-sigma\src\towerofhanoi.cpp
 	<iostream>
 	"TowerOfHanoi.h"
+
+1513411619 source:d:\github\melody-sigma\melody-sigma\src\insertionsort.cpp
+	<iostream>
+	"InsertionSort.h"
+
+1513411695 d:\github\melody-sigma\melody-sigma\include\insertionsort.h
+	<iostream>
 

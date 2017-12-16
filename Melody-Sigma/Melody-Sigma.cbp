@@ -36,6 +36,7 @@
 		</Compiler>
 		<Unit filename="include/Command.h" />
 		<Unit filename="include/Complex.h" />
+		<Unit filename="include/InsertionSort.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Math.h" />
 		<Unit filename="include/Operations.h" />
@@ -46,6 +47,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
 		<Unit filename="src/Complex.cpp" />
+		<Unit filename="src/InsertionSort.cpp" />
 		<Unit filename="src/LinkedList.cpp" />
 		<Unit filename="src/Math.cpp" />
 		<Unit filename="src/Operations.cpp" />
