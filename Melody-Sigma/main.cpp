@@ -4,7 +4,9 @@
 #include <Complex.h>
 #include <Poly.h>
 #include <TowerOfHanoi.h>
-#include <InsertionSort.h>
+//#include <InsertionSort.h>
+#include <SelectionSort.h>
+
 using namespace std;
 
 int main()
@@ -37,11 +39,17 @@ int main()
 
     TowerOfHanoi obj;
     obj.tower(4, 'A', 'B', 'C');
-    */
-    InsertionSort obj;
+
+    InsertionSort obj2;
     int arr[]={10, 20, 40, 7, 5, 2, 1, 9, 6, 8};
     int n=10;
-    obj.ins_sort(arr, n);
+    obj2.ins_sort(arr, n);
+    obj2.print(arr, n);
+*/
+    int arr[]={10, 20, 40, 7, 5, 2, 1, 9, 6, 8};
+    int n=10;
+    SelectionSort obj;
+    obj.sel_sort(arr, n);
     obj.print(arr, n);
     return 0;
 }
