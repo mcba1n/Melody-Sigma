@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Operations.h>
-#include <Command.h>
+#include <RealCommand.h>
 #include <Complex.h>
 using namespace std;
 
@@ -21,9 +21,18 @@ int main()
     conj.printComplex();
 
     // example command
-    string cmd = "2!+5 +(e+2*PI)*10 +7^2";
-    Command myCommand(cmd, REAL);
-    cout << "Your command result: " << myCommand.get_result() << endl;
+    string cmd = "7*10*add(100, 2)"; //"2!+5 +(e+2*PI)*10 +7^2";
+    int mode = REAL;
+
+    if (mode == REAL) {
+        RealCommand realCommand(cmd);
+        cout << "Your command result: " << realCommand.get_result() << endl;
+    } else if (mode == COMPLEX) {
+    } else if (mode == POLY) {
+    } else if (mode == MATRIX) {
+    } else {
+        std::cout << "Invalid command mode" << std::endl;
+    }
 
     return 0;
 }

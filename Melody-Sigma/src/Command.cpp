@@ -1,25 +1,90 @@
 #include "Command.h"
 
-Command::Command(std::string cmd, int md)
+Command::Command()
 {
-    std::string cmd_stripped = replace_string(cmd, " ", "");     // strip the white spaces
-    mode = md;                                                   // set the mode
-    if (mode == REAL) {
-        std::string cmd_consts = evaluate_constants(cmd_stripped);
-        std::string postfix = infix_to_postfix(cmd_consts);
-        std::cout << "postfix exp: " << postfix << std::endl;
-        result = evaluate_postfix(postfix);
-    } else if (mode == COMPLEX) {
-    } else if (mode == POLY) {
-    } else if (mode == MATRIX) {
-    } else {
-        std::cout << "Invalid command mode" << std::endl;
-    }
+    //ctor
 }
 
 Command::~Command()
 {
     //dtor
+}
+
+// find all function names and their arguments in a string, then return them
+std::vector<fContainer> Command::find_args(std::string c_string) {
+    std::vector<fContainer> funcs;
+    fContainer *currFunc = NULL;
+    std::string temp_name;
+    int temp_arg_index;
+    int num_brackets = 0, num_funcs = 0, arg_len = 0;
+
+    for (int i = 0; i < c_string.size(); i++) {
+        char curr_char = c_string[i];
+        char next_char = c_string[i + 1];
+
+        // record any function names, then splice them out
+        if (isalpha(curr_char)) {
+            temp_name.push_back(curr_char);
+            if (!isalpha(next_char)) {
+                // end of a word, so a function is found
+                currFunc = new fContainer;      // allocate memory for func container
+                currFunc->name = temp_name;
+                num_funcs++;
+                temp_name.clear();
+            }
+        }
+        // record function arguments
+        if (curr_char == '(' && ++num_brackets == num_funcs) {
+            temp_arg_index = i;
+            arg_len = 0;
+        } else if (curr_char == ')' && num_brackets > 0) {
+            currFunc->arg = c_string.substr(temp_arg_index + 1, arg_len);
+            funcs.push_back(*currFunc);
+        } else {
+            arg_len++;
+        }
+    }
+    return funcs;
+}
+
+std::string Command::evaluate_functions(std::string c_string, std::map<std::string, method_t> m) {
+    std::vector<fContainer> funcs = find_args(c_string);
+    fContainer *myFunc;
+    Operations ops;
+    double result = NULL;
+
+    // iterate through each function
+    for (int i = 0; i < funcs.size(); i++) {
+        myFunc = &funcs[i];
+
+        // split the arg by delim
+        std::vector<std::string> args;
+        char str[MAX_LEN];
+        strcpy(str, myFunc->arg.c_str());
+        char *pch = strtok(str, ",");
+        while (pch != NULL) {
+            args.push_back( replace_string(pch, " ", "") );
+            pch = strtok (NULL, ",");
+        }
+
+        // make the func call using mapped strings
+        size_t num_args = args.size();
+        func_map_t::iterator x = m.find(myFunc->name);
+        if (num_args == 1) {
+            result = (ops.*(x->second))( std::stof(args[0]) );
+        } else if (num_args == 2) {
+            result = (ops.*(x->second))( std::stof(args[0]), std::stof(args[1]) );
+        } else {
+            std::cout << "Too many arguments!\n" << std::endl;
+        }
+    }
+
+    if (result != NULL) {
+        //TODO
+        //replace value into original string
+    }
+
+    return "";
 }
 
 // convert names of constants into their values for a given string

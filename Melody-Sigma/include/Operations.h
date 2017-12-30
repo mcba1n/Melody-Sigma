@@ -25,7 +25,7 @@ class Operations : public Math
         int floor(double n);
         int ceil(double n);
         bool palindrome(int n);
-        double log (double base, double n);
+        double log(double base, double n);
         double exponent(double base, int power);
 
     protected:
