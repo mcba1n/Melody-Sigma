@@ -1,9 +1,7 @@
 # depslib dependency file v1.0
-1512610097 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+1514694072 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
-	<Operations.h>
-	<Command.h>
-	<Complex.h>
+	<RealCommand.h>
 
 1512607180 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math.cpp
 	"Math.h"
@@ -11,18 +9,18 @@
 
 1512590751 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math.h
 
-1512610245 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
+1514624420 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
 	"Operations.h"
 	"Complex.h"
 
-1512609106 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\operations.h
+1512789372 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
 	"Complex.h"
 
-1512610194 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
+1514694202 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
 	"Command.h"
 
-1512608961 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
+1514692342 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
 	<iostream>
 	<Stack.h>
 	<string>
@@ -30,8 +28,12 @@
 	<stdlib.h>
 	<Operations.h>
 	<Math.h>
+	<map>
+	<ctype.h>
+	<vector>
+	<cstring>
 
-1512608711 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\stack.h
+1512622898 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\stack.h
 	<iostream>
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
@@ -145,4 +147,44 @@
 1513611667 d:\github\melody-sigma\melody-sigma\include\selectionsort.h
 	<iostream>
 	"InsertionSort.h"
+
+1514625317 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\realcommand.h
+	<Command.h>
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\poly.h
+	<iostream>
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\towerofhanoi.h
+	<iostream>
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\selectionsort.h
+	<iostream>
+	"InsertionSort.h"
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\insertionsort.h
+	<iostream>
+
+1514608657 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\insertionsort.cpp
+	<iostream>
+	"InsertionSort.h"
+
+1514608657 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\poly.cpp
+	<iostream>
+	<stdlib.h>
+	"poly.h"
+
+1514633441 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\realcommand.cpp
+	"RealCommand.h"
+
+1514608657 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\selectionsort.cpp
+	<iostream>
+	"SelectionSort.h"
+
+1514608657 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\towerofhanoi.cpp
+	<iostream>
+	"TowerOfHanoi.h"
+
+1514623294 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.tpp
+
+1514624122 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.hxx
 

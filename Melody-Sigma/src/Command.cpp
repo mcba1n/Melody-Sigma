@@ -27,8 +27,9 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
             temp_name.push_back(curr_char);
             if (!isalpha(next_char)) {
                 // end of a word, so a function is found
-                currFunc = new fContainer;      // allocate memory for func container
+                currFunc = new fContainer;                  // allocate memory for func container
                 currFunc->name = temp_name;
+                currFunc->index = i - temp_name.length();   // start index of func
                 num_funcs++;
                 temp_name.clear();
             }
@@ -47,11 +48,10 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
     return funcs;
 }
 
-std::string Command::evaluate_functions(std::string c_string, std::map<std::string, method_t> m) {
+std::string Command::evaluate_functions(std::string c_string) {
     std::vector<fContainer> funcs = find_args(c_string);
     fContainer *myFunc;
     Operations ops;
-    double result = NULL;
 
     // iterate through each function
     for (int i = 0; i < funcs.size(); i++) {
@@ -67,24 +67,29 @@ std::string Command::evaluate_functions(std::string c_string, std::map<std::stri
             pch = strtok (NULL, ",");
         }
 
-        // make the func call using mapped strings
-        size_t num_args = args.size();
-        func_map_t::iterator x = m.find(myFunc->name);
-        if (num_args == 1) {
-            result = (ops.*(x->second))( std::stof(args[0]) );
-        } else if (num_args == 2) {
-            result = (ops.*(x->second))( std::stof(args[0]), std::stof(args[1]) );
-        } else {
-            std::cout << "Too many arguments!\n" << std::endl;
-        }
-    }
+        // make the func call
+        if (args.size() == 1) args.push_back(""); // for one arg
+        result = function_call(myFunc->name, args[0], args[1]);
 
-    if (result != NULL) {
-        //TODO
-        //replace value into original string
-    }
+        // convert result to string
+        std::string str_result;
+        char buf[MAX_LEN];
+        sprintf(buf, "%f", result);
+        str_result = buf;
 
-    return "";
+        // replace in original string
+        int str_func_len = myFunc->name.length() + myFunc->arg.length() + 2;
+        c_string = replace_string(c_string, c_string.substr(myFunc->index+1, str_func_len), str_result);
+    }
+    return c_string;
+}
+
+double Command::function_call(std::string name, std::string arg1, std::string arg2) {
+    Operations ops;
+    if (name == "add")
+        return ops.add( std::stof(arg1), std::stof(arg2) );
+    else if (name == "fibonacci")
+        return ops.fibonacci( std::stoi(arg1) );
 }
 
 // convert names of constants into their values for a given string

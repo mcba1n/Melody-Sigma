@@ -19,16 +19,13 @@
 #define POLY 3
 #define MATRIX 4
 
-// function pointer types
-typedef double (Operations::*method_t)(double, double);
-typedef double (Operations::*method_t)(double);
-typedef std::map<std::string, method_t> func_map_t;
-
 // container for stringified functions
 typedef struct fContainer {
     std::string name;
     std::string arg;
+    int index;
 };
+
 #define MAX_LEN 100
 
 class Command
@@ -40,11 +37,11 @@ class Command
 
     protected:
         double result;
-        int mode;
 
         double evaluate_postfix(std::string postfix_string);
+        double function_call(std::string name, std::string arg1, std::string arg2);
         std::string evaluate_constants(std::string c_string);
-        std::string evaluate_functions(std::string c_string, std::map<std::string, method_t> m);
+        std::string evaluate_functions(std::string c_string);
         std::vector<fContainer> find_args(std::string c_string);
         std::string replace_string(std::string subject, const std::string& search,
                           const std::string& replace);
