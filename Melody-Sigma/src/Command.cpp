@@ -29,8 +29,20 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
         char curr_char = c_string[i];
         char next_char = c_string[i + 1];
 
+        // record function arguments
+        if (curr_char == '(' && ++num_brackets == num_funcs) {
+            temp_arg_index = i;
+            arg_len = 0;
+        } else if (curr_char == ')' && num_brackets == num_funcs) {
+            currFunc->arg = c_string.substr(temp_arg_index + 1, arg_len);
+            funcs.push_back(*currFunc);
+        } else arg_len++;
+
+        // ignore the letter 'i' with a number before it, since it is not a func name
+        if (curr_char == 'i' && is_operand(c_string[i - 1])) continue;
+
         // record any function names, then splice them out
-        if (isalpha(curr_char) && curr_char != 'i') {       // no function name can use 'i'
+        if (isalpha(curr_char)) {
             temp_name.push_back(curr_char);
             if (!isalpha(next_char)) {
                 // end of a word, so a function is found
@@ -41,14 +53,6 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
                 temp_name.clear();
             }
         }
-        // record function arguments
-        if (curr_char == '(' && ++num_brackets == num_funcs) {
-            temp_arg_index = i;
-            arg_len = 0;
-        } else if (curr_char == ')' && num_brackets == num_funcs) {
-            currFunc->arg = c_string.substr(temp_arg_index + 1, arg_len);
-            funcs.push_back(*currFunc);
-        } else arg_len++;
     }
     return funcs;
 }
@@ -94,7 +98,7 @@ Complex Command::function_call(std::string name, std::string arg1, std::string a
     c_arg2 = evaluate_handler(arg2);
     if (name == "add") {
         return ops.add(c_arg1, c_arg2);
-    } else if (name == "fbc") {
+    } else if (name == "fib") {
         Complex z(ops.fibonacci(c_arg1.getReal()), NULL);
         return z;
     }
