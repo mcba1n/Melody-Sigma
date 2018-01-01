@@ -33,12 +33,12 @@ class Command
     public:
         Command();
         virtual ~Command();
-        double get_result();
 
     protected:
-        double result;
-
-        double evaluate_postfix(std::string postfix_string);
+        Complex evaluate_handler(std::string c_string);
+        Complex evaluate_postfix(std::string postfix_string);
+        Complex str_to_complex(std::string complx_str);
+        Complex double_to_complex(double x);
         double function_call(std::string name, std::string arg1, std::string arg2);
         std::string evaluate_constants(std::string c_string);
         std::string evaluate_functions(std::string c_string);
@@ -49,6 +49,7 @@ class Command
         bool is_operand(char operand);
         int precedence(char op);
         int operand_length(int pos, std::string c_string);
+        bool is_operator(char c);
 
     private:
 

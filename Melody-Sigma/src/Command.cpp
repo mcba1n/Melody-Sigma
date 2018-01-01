@@ -10,6 +10,15 @@ Command::~Command()
     //dtor
 }
 
+Complex Command::evaluate_handler(std::string c_string) {
+    //std::string cmd_funcs = evaluate_functions(c_string);
+    std::string cmd_stripped = replace_string(c_string, " ", "");
+    std::string cmd_consts = evaluate_constants(cmd_stripped);
+    std::string postfix = infix_to_postfix(cmd_consts);
+    std::cout << "POSTFIX:" << postfix << std::endl;
+    return evaluate_postfix(postfix);
+}
+
 // find all function names and their arguments in a string, then return them
 std::vector<fContainer> Command::find_args(std::string c_string) {
     std::vector<fContainer> funcs;
@@ -38,7 +47,7 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
         if (curr_char == '(' && ++num_brackets == num_funcs) {
             temp_arg_index = i;
             arg_len = 0;
-        } else if (curr_char == ')' && num_brackets > 0) {
+        } else if (curr_char == ')' && num_brackets == num_funcs) {
             currFunc->arg = c_string.substr(temp_arg_index + 1, arg_len);
             funcs.push_back(*currFunc);
         } else {
@@ -53,6 +62,9 @@ std::string Command::evaluate_functions(std::string c_string) {
     fContainer *myFunc;
     Operations ops;
 
+    // return original string if no funcs found
+    if (funcs.size() == 0) return c_string;
+
     // iterate through each function
     for (int i = 0; i < funcs.size(); i++) {
         myFunc = &funcs[i];
@@ -64,12 +76,12 @@ std::string Command::evaluate_functions(std::string c_string) {
         char *pch = strtok(str, ",");
         while (pch != NULL) {
             args.push_back( replace_string(pch, " ", "") );
-            pch = strtok (NULL, ",");
+            pch = strtok(NULL, ",");
         }
 
         // make the func call
         if (args.size() == 1) args.push_back(""); // for one arg
-        result = function_call(myFunc->name, args[0], args[1]);
+        double result = function_call(myFunc->name, args[0], args[1]);
 
         // convert result to string
         std::string str_result;
@@ -78,8 +90,8 @@ std::string Command::evaluate_functions(std::string c_string) {
         str_result = buf;
 
         // replace in original string
-        int str_func_len = myFunc->name.length() + myFunc->arg.length() + 2;
-        c_string = replace_string(c_string, c_string.substr(myFunc->index+1, str_func_len), str_result);
+        int str_func_len = myFunc->name.length() + myFunc->arg.length() + 2;    // add two for the brackets
+        c_string = replace_string(c_string, c_string.substr(myFunc->index + 1, str_func_len), str_result);
     }
     return c_string;
 }
@@ -120,14 +132,27 @@ std::string Command::replace_string(std::string subject, const std::string& sear
     return subject;
 }
 
-double Command::get_result() {
-    return result;
+// convert a real or imag term into a Complex object
+Complex Command::str_to_complex(std::string complx_str) {
+    std::string str_coeff = replace_string(complx_str, "i", "");
+    double coeff = atof(str_coeff.c_str());
+    Complex z;
+    if (complx_str.length() ==  str_coeff.length()) z.setReal(coeff);   // check if real or imag term
+    else z.setImag(coeff);
+    return z;
 }
 
-double Command::evaluate_postfix(std::string postfix_string) {
-    Stack<double> op_stack;
+Complex Command::double_to_complex(double x) {
+    Complex z;
+    z.setReal(x);
+    return z;
+}
+
+Complex Command::evaluate_postfix(std::string postfix_string) {
+    std::vector<Complex> op_stack;
     Operations ops;
     char curr_char;
+    Complex val;
 
     for (int i = 0; i < postfix_string.size(); i++) {
         curr_char = postfix_string[i];
@@ -137,58 +162,49 @@ double Command::evaluate_postfix(std::string postfix_string) {
             int op_len = operand_length(i, postfix_string);
             std::string op_substr = postfix_string.substr(i, op_len);   // find the operand string
             i += op_len;                                                // jump past this substring in the loop
-
-            double item = atof(op_substr.c_str());                      // convert ASCII subtr to double
-            op_stack.push(item);
-        }
-
-        // apply the operator
-        if (op_stack.size() >= 2) {
-                // operators with two arguments:
-                double num1, num2;
-                if(curr_char == '+'){
-                    num1 = op_stack.pop();
-                    num2 = op_stack.pop();
-                    op_stack.push(ops.add(num1,num2));
-                }else if(curr_char == '*'){
-                    num1 = op_stack.pop();
-                    num2 = op_stack.pop();
-                    op_stack.push(ops.multiply(num1,num2));
-                }else if(curr_char == '/'){
-                    num1 = op_stack.pop();
-                    num2 = op_stack.pop();
-                    op_stack.push(ops.divide(num2,num1));
-                }else if(curr_char == '-'){
-                    num1 = op_stack.pop();
-                    num2 = op_stack.pop();
-                    op_stack.push(ops.substract(num2,num1));
-                }else if (curr_char == '^') {
-                    num1 = op_stack.pop();
-                    num2 = op_stack.pop();
-                    op_stack.push(ops.exponent(num2, num1));
+            Complex item = str_to_complex(op_substr);
+            op_stack.push_back(item);
+        } else {
+            // apply the operator
+            int end_index = op_stack.size() - 1;
+            if (op_stack.size() >= 2) {
+                    // operators with two args:
+                    Complex num1 = op_stack[end_index];
+                    op_stack.pop_back();
+                    Complex num2 = op_stack[end_index - 1];
+                    op_stack.pop_back();
+                    if(curr_char == '+'){
+                        val = ops.add(num1, num2);
+                    }else if(curr_char == '*'){
+                        val = ops.multiply(num1, num2);
+                    }else if(curr_char == '/'){
+                        val = ops.divide(num2, num1);
+                    }else if(curr_char == '-'){
+                        val = ops.substract(num2, num1);
+                    }else if (curr_char == '^'){
+                        // assume only real numbers make it here
+                        val = double_to_complex( ops.exponent(num2.getReal(), num1.getReal()) );
+                    }
+                    op_stack.push_back(val);
+            }
+            else if (op_stack.size() >= 1) {
+                // operators with one arg:
+                Complex num1 = op_stack[end_index];
+                op_stack.pop_back();
+                if(curr_char == '!') {
+                    // assume only real numbers make it here
+                    val = double_to_complex( ops.factorial(num1.getReal()) );
                 }
-        }
-        if (op_stack.size() >= 1) {
-            // operators with one argument:
-            double num1;
-            if(curr_char == '!') {
-                num1 = op_stack.pop();
-                op_stack.push(ops.factorial(num1));
+                op_stack.push_back(val);
             }
         }
     }
-
-    // if the stack contains only one value, return it as a final result of the calculation
-    if (op_stack.size() == 1) {
-        return op_stack.pop();
-    } else {
-        std::cout << "Error evaluating the expression" << std::endl;
-        return -1;
-    }
+    return val;
 }
 
 std::string Command::infix_to_postfix(std::string infix_string) {
-    Stack<char> op_stack;
+    std::cout << "EXP:" << infix_string << std::endl;
+    std::vector<char> op_stack;
     std::string postfix;
     char curr_char;
 
@@ -198,8 +214,18 @@ std::string Command::infix_to_postfix(std::string infix_string) {
         // ignore the operand delim
         if (curr_char == '\\') continue;
 
+        // if an operator is scanned
+        else if (is_operator(curr_char)) {
+            while(!op_stack.empty() && precedence(curr_char) < precedence(op_stack.back())) {
+                char c = op_stack.back();
+                postfix.push_back(c);
+                op_stack.pop_back();
+            }
+            op_stack.push_back(curr_char);
+        }
+
         // print operands as they arrive
-        if (is_operand(curr_char)) {
+        else if (is_operand(curr_char)) {
             int op_len = operand_length(i, infix_string);
             std::string op_substr = infix_string.substr(i, op_len);     // find the operand string
             std::string op_substr_delim = op_substr.append("\\");       // add delimeter to separate operands
@@ -210,49 +236,33 @@ std::string Command::infix_to_postfix(std::string infix_string) {
 
         // if the stack is empty or contains left parenthesis on top, push the incoming operator onto the stack
         // if the incoming symbol is a left parenthesis, push it on the stack
-        if (curr_char == '(') {
-            op_stack.push(curr_char);
+        else if (curr_char == '(') {
+            op_stack.push_back(curr_char);
         }
 
         // if the incoming symbol is a right parenthesis, pop the stack and print the operators until you see a left parenthesis
         else if (curr_char == ')') {
-            while (op_stack.get_top_item() != -1 && op_stack.get_top_item() != '(') {
-                char c = op_stack.get_top_item();
-                op_stack.pop();
+            while (!op_stack.empty() && op_stack.back() != '(') {
+                char c = op_stack.back();
+                op_stack.pop_back();
                 postfix.push_back(c);
             }
-
-            // now remove the left bracket
-            if (op_stack.get_top_item() == '(') {
-                char c = op_stack.get_top_item();
-                op_stack.pop();
-            }
-        }
-
-        // if an operator is scanned
-        else {
-            while(op_stack.get_top_item() != -1 && precedence(curr_char) <= precedence(op_stack.get_top_item()))
-            {
-                char c = op_stack.get_top_item();
-                op_stack.pop();
-                postfix.push_back(c);
-            }
-            op_stack.push(curr_char);
+            op_stack.pop_back();
         }
     }
 
     // at the end of the expression, pop and print all operators on the stack
-    while (op_stack.get_top_item() != -1) {
-        char c = op_stack.get_top_item();
-        op_stack.pop();
+    while (!op_stack.empty()) {
+        char c = op_stack.back();
         postfix.push_back(c);
+        op_stack.pop_back();
     }
     return postfix;
 }
 
 int Command::operand_length(int pos, std::string c_string) {
     int len = 0;
-    while (is_operand(c_string[pos]) || c_string[pos] == '.') {
+    while (is_operand(c_string[pos]) || c_string[pos] == '.' || c_string[pos] == 'i') {
         pos++;
         len++;
     }
@@ -260,11 +270,8 @@ int Command::operand_length(int pos, std::string c_string) {
 }
 
 bool Command::is_operand(char operand) {
-    if (operand >= '0' && operand <= '9') {
-        return true;
-    } else {
-        return false;
-    }
+    if (operand >= '0' && operand <= '9') return true;
+    else return false;
 }
 
 int Command::precedence(char op) {
@@ -278,4 +285,9 @@ int Command::precedence(char op) {
         return 1;
     else
         return -1;
+}
+
+bool Command::is_operator(char c) {
+	if(c == '+' || c == '-' || c == '*' || c == '/' || c == '^') return true;
+    else return false;
 }

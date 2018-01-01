@@ -13,6 +13,7 @@ class Complex
         double getReal();
         double getImag();
         void printComplex();
+
     protected:
 
     private:

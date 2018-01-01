@@ -4,6 +4,8 @@
 Complex::Complex()
 {
     //ctor
+    real = NULL;
+    imaginary = NULL;
 }
 
 Complex::Complex(double r, double i){
@@ -19,15 +21,19 @@ Complex::~Complex()
 void Complex::setReal(double r){
     real = r;
 }
+
 void Complex::setImag(double i){
     imaginary = i;
 }
+
 double Complex::getReal(){
     return real;
 }
+
 double Complex::getImag(){
     return imaginary;
 }
+
 void Complex::printComplex(){
     if(this->getImag() >= 0){
         std::cout << getReal() << "+" << getImag() << "i" << std::endl;

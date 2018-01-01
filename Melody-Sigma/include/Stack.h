@@ -50,12 +50,13 @@ template <class T>
 T Stack<T>::pop() {
     if (!is_empty()) {
         T item = arr[top];
-        arr[top] = 0;
+        //arr[top] = nullptr;
         top--;
         return item;
     } else {
         // no items in stack
-        return -1;
+        T null;
+        return null;
     }
 }
 
