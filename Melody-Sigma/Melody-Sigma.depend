@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1514793786 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+1514800887 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<RealCommand.h>
 	<ComplexCommand.h>
@@ -10,7 +10,7 @@
 
 1512590751 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math.h
 
-1514624420 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
+1514800399 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\operations.cpp
 	"Operations.h"
 	"Complex.h"
 
@@ -18,18 +18,16 @@
 	<Math.h>
 	"Complex.h"
 
-1514794930 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
+1514802870 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
 	"Command.h"
 
-1514794821 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
+1514799403 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
 	<iostream>
-	<Stack.h>
 	<string>
 	<stdio.h>
 	<stdlib.h>
 	<Operations.h>
 	<Math.h>
-	<map>
 	<ctype.h>
 	<vector>
 	<cstring>
@@ -107,11 +105,11 @@
 1512609528 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\queue.h
 	<iostream>
 
-1514785345 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complex.h
+1514799528 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complex.h
+	<string>
 
-1514785339 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
+1514800981 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
 	"Complex.h"
-	<iostream>
 
 1512624275 d:\github\melody-sigma\melody-sigma\include\complex.h
 
@@ -189,7 +187,7 @@
 
 1514624122 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.hxx
 
-1514727976 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complexcommand.cpp
+1514799367 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complexcommand.cpp
 	"ComplexCommand.h"
 
 1514728113 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complexcommand.h

@@ -1,6 +1,7 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
+#include <string>
 
 class Complex
 {
@@ -13,6 +14,7 @@ class Complex
         double getReal();
         double getImag();
         void printComplex();
+        std::string toString();
 
     protected:
 

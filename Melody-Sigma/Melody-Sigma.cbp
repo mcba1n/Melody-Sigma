@@ -45,7 +45,6 @@
 		<Unit filename="include/Queue.h" />
 		<Unit filename="include/RealCommand.h" />
 		<Unit filename="include/SelectionSort.h" />
-		<Unit filename="include/Stack.h" />
 		<Unit filename="include/TowerOfHanoi.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
@@ -59,7 +58,6 @@
 		<Unit filename="src/Queue.cpp" />
 		<Unit filename="src/RealCommand.cpp" />
 		<Unit filename="src/SelectionSort.cpp" />
-		<Unit filename="src/Stack.cpp" />
 		<Unit filename="src/TowerOfHanoi.cpp" />
 		<Extensions>
 			<code_completion />

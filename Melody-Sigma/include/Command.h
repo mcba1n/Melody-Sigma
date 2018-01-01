@@ -2,13 +2,11 @@
 #define COMMAND_H
 
 #include <iostream>
-#include <Stack.h>
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <Operations.h>
 #include <Math.h>
-#include <map>
 #include <ctype.h>
 #include <vector>
 #include <cstring>
@@ -39,7 +37,7 @@ class Command
         Complex evaluate_postfix(std::string postfix_string);
         Complex str_to_complex(std::string complx_str);
         Complex double_to_complex(double x);
-        double function_call(std::string name, std::string arg1, std::string arg2);
+        Complex function_call(std::string name, std::string arg1, std::string arg2);
         std::string evaluate_constants(std::string c_string);
         std::string evaluate_functions(std::string c_string);
         std::vector<fContainer> find_args(std::string c_string);

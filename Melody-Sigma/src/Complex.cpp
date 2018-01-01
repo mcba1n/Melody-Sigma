@@ -1,5 +1,4 @@
 #include "Complex.h"
-#include <iostream>
 
 Complex::Complex()
 {
@@ -34,10 +33,20 @@ double Complex::getImag(){
     return imaginary;
 }
 
-void Complex::printComplex(){
-    if(this->getImag() >= 0){
-        std::cout << getReal() << "+" << getImag() << "i" << std::endl;
-    }
-    else
-        std::cout << getReal() << getImag() << "i" << std::endl;
+std::string Complex::toString(){
+    // append real part
+    std::string res;
+    if (real < 0) res.push_back('-');
+    char buf[100];
+    sprintf(buf, "%f", real);
+    res = buf;
+
+    // append imag part
+    sprintf(buf, "%f", imaginary);
+    if (imaginary >= 0) res.push_back('+');
+    else if (imaginary < 0) res.push_back('-');
+    res.append(buf);
+    res.push_back('i');
+
+    return res;
 }

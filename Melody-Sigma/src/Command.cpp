@@ -11,11 +11,10 @@ Command::~Command()
 }
 
 Complex Command::evaluate_handler(std::string c_string) {
-    //std::string cmd_funcs = evaluate_functions(c_string);
-    std::string cmd_stripped = replace_string(c_string, " ", "");
+    std::string cmd_funcs = evaluate_functions(c_string);
+    std::string cmd_stripped = replace_string(cmd_funcs, " ", "");
     std::string cmd_consts = evaluate_constants(cmd_stripped);
     std::string postfix = infix_to_postfix(cmd_consts);
-    std::cout << "POSTFIX:" << postfix << std::endl;
     return evaluate_postfix(postfix);
 }
 
@@ -24,15 +23,14 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
     std::vector<fContainer> funcs;
     fContainer *currFunc = NULL;
     std::string temp_name;
-    int temp_arg_index;
-    int num_brackets = 0, num_funcs = 0, arg_len = 0;
+    int temp_arg_index = 0, num_brackets = 0, num_funcs = 0, arg_len = 0;
 
     for (int i = 0; i < c_string.size(); i++) {
         char curr_char = c_string[i];
         char next_char = c_string[i + 1];
 
         // record any function names, then splice them out
-        if (isalpha(curr_char)) {
+        if (isalpha(curr_char) && curr_char != 'i') {       // no function name can use 'i'
             temp_name.push_back(curr_char);
             if (!isalpha(next_char)) {
                 // end of a word, so a function is found
@@ -50,9 +48,7 @@ std::vector<fContainer> Command::find_args(std::string c_string) {
         } else if (curr_char == ')' && num_brackets == num_funcs) {
             currFunc->arg = c_string.substr(temp_arg_index + 1, arg_len);
             funcs.push_back(*currFunc);
-        } else {
-            arg_len++;
-        }
+        } else arg_len++;
     }
     return funcs;
 }
@@ -81,13 +77,8 @@ std::string Command::evaluate_functions(std::string c_string) {
 
         // make the func call
         if (args.size() == 1) args.push_back(""); // for one arg
-        double result = function_call(myFunc->name, args[0], args[1]);
-
-        // convert result to string
-        std::string str_result;
-        char buf[MAX_LEN];
-        sprintf(buf, "%f", result);
-        str_result = buf;
+        Complex result = function_call(myFunc->name, args[0], args[1]);
+        std::string str_result = result.toString();
 
         // replace in original string
         int str_func_len = myFunc->name.length() + myFunc->arg.length() + 2;    // add two for the brackets
@@ -96,12 +87,18 @@ std::string Command::evaluate_functions(std::string c_string) {
     return c_string;
 }
 
-double Command::function_call(std::string name, std::string arg1, std::string arg2) {
+Complex Command::function_call(std::string name, std::string arg1, std::string arg2) {
     Operations ops;
-    if (name == "add")
-        return ops.add( std::stof(arg1), std::stof(arg2) );
-    else if (name == "fibonacci")
-        return ops.fibonacci( std::stoi(arg1) );
+    Complex c_arg1, c_arg2;
+    c_arg1 = evaluate_handler(arg1);
+    c_arg2 = evaluate_handler(arg2);
+    if (name == "add") {
+        return ops.add(c_arg1, c_arg2);
+    } else if (name == "fbc") {
+        Complex z(ops.fibonacci(c_arg1.getReal()), NULL);
+        return z;
+    }
+    // TODO: add more functions here
 }
 
 // convert names of constants into their values for a given string
@@ -202,11 +199,14 @@ Complex Command::evaluate_postfix(std::string postfix_string) {
     return val;
 }
 
-std::string Command::infix_to_postfix(std::string infix_string) {
-    std::cout << "EXP:" << infix_string << std::endl;
+std::string Command::infix_to_postfix(std::string infix_str) {
     std::vector<char> op_stack;
     std::string postfix;
     char curr_char;
+
+    // trick to fix neg sign at the front and when no ops are used
+    std::string infix_string = "0+";
+    infix_string.append(infix_str);
 
     for (int i = 0; i < infix_string.size(); i++) {
         curr_char = infix_string[i];

@@ -57,7 +57,6 @@ Complex Operations::divide(Complex a, Complex b){
     Complex bconjugate = conjugate(b);
     double denominator = multiply(b,bconjugate).getReal();
     Complex numerator = multiply(a,bconjugate);
-    numerator.printComplex();
     result.setReal(numerator.getReal()/denominator);
     result.setImag(numerator.getImag()/denominator);
     return result;
@@ -130,5 +129,3 @@ int Operations::fibonacci(int n){
 bool Operations::palindrome(int n){
     return 0;
 }
-
-
