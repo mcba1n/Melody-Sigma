@@ -44,6 +44,7 @@
 		<Unit filename="include/RealCommand.h" />
 		<Unit filename="include/Sorting.h" />
 		<Unit filename="include/TowerOfHanoi.h" />
+		<Unit filename="include/algorithms/TowerOfHanoi.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
 		<Unit filename="src/Complex.cpp" />
@@ -55,6 +56,8 @@
 		<Unit filename="src/RealCommand.cpp" />
 		<Unit filename="src/Sorting.cpp" />
 		<Unit filename="src/TowerOfHanoi.cpp" />
+		<Unit filename="src/algorithms/Sorting.cpp" />
+		<Unit filename="src/algorithms/TowerOfHanoi.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -2,7 +2,8 @@
 #include <RealCommand.h>
 #include <ComplexCommand.h>
 #include <queue>
-#include <Sorting.h>
+#include "algorithms/TowerOfHanoi.h"
+#include "algorithms/Sorting.h"
 using namespace std;
 
 int main()
@@ -46,6 +47,7 @@ int main()
         QUE.pop();
     }
     */
+    //grouped files test
     //Sorting test
     int a[10]={40, 60, 10, 20, 45, 70, 80, 90, 25, 15};
     Sort obj;
@@ -55,4 +57,8 @@ int main()
     int b[10]={40, 60, 10, 20, 45, 70, 80, 90, 25, 15};
     obj.SelectionSort(b, 10);
     obj.print(b, 10);
+    //Tower of Hanoi test
+    TowerOfHanoi obj2;
+    obj2.tower(4, 'A', 'B', 'C');
+
 }

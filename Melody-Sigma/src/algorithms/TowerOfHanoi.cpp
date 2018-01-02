@@ -1,5 +1,5 @@
 #include <iostream>
-#include "TowerOfHanoi.h"
+#include "../../include/algorithms/TowerOfHanoi.h"
 using namespace std;
 TowerOfHanoi::TowerOfHanoi(){
 }
@@ -16,3 +16,4 @@ void TowerOfHanoi::tower(int n, char BEG, char AUX, char END){
         tower(n-1, AUX, BEG, END);
         return;
 }
+

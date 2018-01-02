@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Sorting.h"
+#include "../../include/algorithms/Sorting.h"
 
 using namespace std;
 
