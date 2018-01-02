@@ -1,4 +1,9 @@
+<<<<<<< HEAD:Melody-Sigma/src/Math/Complex.cpp
 #include "Math/Complex.h"
+=======
+#include "Complex.h"
+#include <stdio.h>
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6:Melody-Sigma/src/Complex.cpp
 
 Complex::Complex()
 {

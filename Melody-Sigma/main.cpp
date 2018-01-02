@@ -1,4 +1,5 @@
 #include <iostream>
+<<<<<<< HEAD
 #include <Command/ComplexCommand.h>
 #include <Command/RealCommand.h>
 
@@ -10,6 +11,20 @@ int main()
     string cmd = "-5i-10.0-100+20+fib(5.0)";//"-7*10*fib(11)+11i"; //"2!+5 +(e+2*PI)*10 +7^2";
     cout << cmd << endl;
     int mode = REAL;
+=======
+#include <RealCommand.h>
+#include <ComplexCommand.h>
+#include <queue>
+#include "algorithms/TowerOfHanoi.h"
+#include "algorithms/Sorting.h"
+using namespace std;
+
+int main()
+{   /*
+    // example command
+    string cmd = "fib(5)+5i";//"(2i-6)/(3i+2)";//"0+-7*10*fibonacci(11)+11i"; //"2!+5 +(e+2*PI)*10 +7^2";
+    int mode = COMPLEX;
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
 
     // evaluation
     if (mode == REAL) {
@@ -23,4 +38,42 @@ int main()
     } else {
         cout << "Invalid command mode" << endl;
     }
+    */
+    /*Queue testing
+    queue<int> QUE;
+    //int ele; //element
+    int n=1;
+    //push operation
+    //Through loop
+    //do{
+    //  cin>>ele;
+    // QUE.push(ele);
+    // n++;
+    //}while(n<=5);
+    //manually pushing each element
+    QUE.push(10);
+    QUE.push(20);
+    QUE.push(30);
+    QUE.push(40);
+    QUE.push(50);
+    //traverse and pop
+    while(!QUE.empty()){
+        cout<<QUE.front()<<"  ";
+        QUE.pop();
+    }
+    */
+    //grouped files test
+    //Sorting test
+    int a[10]={40, 60, 10, 20, 45, 70, 80, 90, 25, 15};
+    Sort obj;
+    obj.InsertionSort(a, 10);
+    obj.print(a, 10);
+    cout<<"\n";
+    int b[10]={40, 60, 10, 20, 45, 70, 80, 90, 25, 15};
+    obj.SelectionSort(b, 10);
+    obj.print(b, 10);
+    //Tower of Hanoi test
+    TowerOfHanoi obj2;
+    obj2.tower(4, 'A', 'B', 'C');
+
 }

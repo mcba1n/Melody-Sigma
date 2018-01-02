@@ -37,56 +37,57 @@
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1513612913 source:d:\github\melody-sigma\melody-sigma\main.cpp
+1514877961 source:d:\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
-	<Operations.h>
-	<Command.h>
-	<Complex.h>
-	<Poly.h>
-	<TowerOfHanoi.h>
-	<SelectionSort.h>
+	<RealCommand.h>
+	<ComplexCommand.h>
+	<queue>
+	"algorithms/TowerOfHanoi.h"
+	"algorithms/Sorting.h"
 
-1512624275 d:\github\melody-sigma\melody-sigma\include\operations.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>
 	"Complex.h"
 
-1512624275 d:\github\melody-sigma\melody-sigma\include\math.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\math.h
 
-1512629880 d:\github\melody-sigma\melody-sigma\include\command.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\command.h
 	<iostream>
-	<Stack.h>
 	<string>
 	<stdio.h>
 	<stdlib.h>
 	<Operations.h>
 	<Math.h>
+	<ctype.h>
+	<vector>
+	<cstring>
 
 1512624275 d:\github\melody-sigma\melody-sigma\include\stack.h
 	<iostream>
 
-1512624275 d:\github\melody-sigma\melody-sigma\include\queue.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\queue.h
 	<iostream>
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\command.cpp
+1514870437 source:d:\github\melody-sigma\melody-sigma\src\command.cpp
 	"Command.h"
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\math.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\math.cpp
 	"Math.h"
 	<iostream>
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\operations.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\operations.cpp
 	"Operations.h"
 	"Complex.h"
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\queue.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\queue.cpp
 	"queue.h"
 
 1512624275 source:d:\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1512624275 d:\github\melody-sigma\melody-sigma\include\linkedlist.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\linkedlist.h
 	<iostream>
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\linkedlist.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\linkedlist.cpp
 	<iostream>
 	<stdlib.h>
 	"linkedlist.h"
@@ -111,39 +112,39 @@
 1514884596 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
 	"Complex.h"
 
-1512624275 d:\github\melody-sigma\melody-sigma\include\complex.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\complex.h
+	<string>
 
-1512624275 source:d:\github\melody-sigma\melody-sigma\src\complex.cpp
+1514871192 source:d:\github\melody-sigma\melody-sigma\src\complex.cpp
 	"Complex.h"
-	<iostream>
+	<stdio.h>
 
-1512631790 source:d:\github\melody-sigma\melody-sigma\src\poly.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\poly.cpp
 	<iostream>
 	<stdlib.h>
 	"poly.h"
 
-1512629995 d:\github\melody-sigma\melody-sigma\include\poly.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\poly.h
 	<iostream>
 
-1512662106 d:\github\melody-sigma\melody-sigma\include\towerofhanoi.h
+1514877410 d:\github\melody-sigma\melody-sigma\include\towerofhanoi.h
 	<iostream>
 
-1512662319 source:d:\github\melody-sigma\melody-sigma\src\towerofhanoi.cpp
-	<iostream>
+1514877410 source:d:\github\melody-sigma\melody-sigma\src\towerofhanoi.cpp
 	"TowerOfHanoi.h"
 
-1513423793 source:d:\github\melody-sigma\melody-sigma\src\insertionsort.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\insertionsort.cpp
 	<iostream>
 	"InsertionSort.h"
 
-1513411695 d:\github\melody-sigma\melody-sigma\include\insertionsort.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\insertionsort.h
 	<iostream>
 
-1513612041 source:d:\github\melody-sigma\melody-sigma\src\selectionsort.cpp
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\selectionsort.cpp
 	<iostream>
 	"SelectionSort.h"
 
-1513611667 d:\github\melody-sigma\melody-sigma\include\selectionsort.h
+1514806816 d:\github\melody-sigma\melody-sigma\include\selectionsort.h
 	<iostream>
 	"InsertionSort.h"
 
@@ -194,6 +195,7 @@
 	<Command.h>
 	<Complex.h>
 
+<<<<<<< HEAD
 1514886473 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\complexcommand.h
 	<Command/Command.h>
 	<Complex.h>
@@ -254,4 +256,37 @@
 1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\algorithm\selectionsort.h
 	<iostream>
 	"InsertionSort.h"
+=======
+1514806816 d:\github\melody-sigma\melody-sigma\include\realcommand.h
+	<Command.h>
+
+1514806816 d:\github\melody-sigma\melody-sigma\include\complexcommand.h
+	<Command.h>
+	<Complex.h>
+
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\complexcommand.cpp
+	"ComplexCommand.h"
+
+1514806816 source:d:\github\melody-sigma\melody-sigma\src\realcommand.cpp
+	"RealCommand.h"
+
+1514877961 d:\github\melody-sigma\melody-sigma\include\sorting.h
+
+1514877961 source:d:\github\melody-sigma\melody-sigma\src\sorting.cpp
+	"Sorting.h"
+
+1514877510 source:d:\github\melody-sigma\melody-sigma\src\algorithms\towerofhanoi.cpp
+	<iostream>
+	"../../include/algorithms/TowerOfHanoi.h"
+
+1514877350 d:\github\melody-sigma\melody-sigma\include\algorithms\towerofhanoi.h
+	<iostream>
+
+1514877913 d:\github\melody-sigma\melody-sigma\include\algorithms\sorting.h
+	<iostream>
+
+1514877990 source:d:\github\melody-sigma\melody-sigma\src\algorithms\sorting.cpp
+	<iostream>
+	"../../include/algorithms/Sorting.h"
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
 

@@ -34,17 +34,24 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+<<<<<<< HEAD
 		<Unit filename="include/Algorithm/InsertionSort.h" />
 		<Unit filename="include/Algorithm/SelectionSort.h" />
 		<Unit filename="include/Algorithm/TowerOfHanoi.h" />
 		<Unit filename="include/Command/Command.h" />
 		<Unit filename="include/Command/ComplexCommand.h" />
 		<Unit filename="include/Command/RealCommand.h" />
+=======
+		<Unit filename="include/Command.h" />
+		<Unit filename="include/Complex.h" />
+		<Unit filename="include/ComplexCommand.h" />
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Math/Complex.h" />
 		<Unit filename="include/Math/Math.h" />
 		<Unit filename="include/Math/Operations.h" />
 		<Unit filename="include/Poly.h" />
+<<<<<<< HEAD
 		<Unit filename="include/Queue.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Algorithm/InsertionSort.cpp" />
@@ -53,12 +60,30 @@
 		<Unit filename="src/Command/Command.cpp" />
 		<Unit filename="src/Command/ComplexCommand.cpp" />
 		<Unit filename="src/Command/RealCommand.cpp" />
+=======
+		<Unit filename="include/RealCommand.h" />
+		<Unit filename="include/Sorting.h" />
+		<Unit filename="include/TowerOfHanoi.h" />
+		<Unit filename="include/algorithms/TowerOfHanoi.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Command.cpp" />
+		<Unit filename="src/Complex.cpp" />
+		<Unit filename="src/ComplexCommand.cpp" />
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
 		<Unit filename="src/LinkedList.cpp" />
 		<Unit filename="src/Math/Complex.cpp" />
 		<Unit filename="src/Math/Math.cpp" />
 		<Unit filename="src/Math/Operations.cpp" />
 		<Unit filename="src/Poly.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/Queue.cpp" />
+=======
+		<Unit filename="src/RealCommand.cpp" />
+		<Unit filename="src/Sorting.cpp" />
+		<Unit filename="src/TowerOfHanoi.cpp" />
+		<Unit filename="src/algorithms/Sorting.cpp" />
+		<Unit filename="src/algorithms/TowerOfHanoi.cpp" />
+>>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
 		<Extensions>
 			<code_completion />
 			<envvars />
