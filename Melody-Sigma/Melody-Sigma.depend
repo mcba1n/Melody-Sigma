@@ -37,12 +37,13 @@
 
 1512607004 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\stack.cpp
 
-1514886721 source:d:\github\melody-sigma\melody-sigma\main.cpp
+1514887959 source:d:\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Command/ComplexCommand.h>
 	<Command/RealCommand.h>
 	<Algorithm/Sorting.h>
 	<Algorithm/TowerOfHanoi.h>
+	<queue>
 
 1514806816 d:\github\melody-sigma\melody-sigma\include\operations.h
 	<Math.h>

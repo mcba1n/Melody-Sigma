@@ -34,7 +34,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Algorithm/SelectionSort.h" />
 		<Unit filename="include/Algorithm/Sorting.h" />
 		<Unit filename="include/Algorithm/TowerOfHanoi.h" />
 		<Unit filename="include/Command/Command.h" />
@@ -46,8 +45,7 @@
 		<Unit filename="include/Math/Operations.h" />
 		<Unit filename="include/Poly.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Algorithm/InsertionSort.cpp" />
-		<Unit filename="src/Algorithm/SelectionSort.cpp" />
+		<Unit filename="src/Algorithm/Sorting.cpp" />
 		<Unit filename="src/Algorithm/TowerOfHanoi.cpp" />
 		<Unit filename="src/Command/Command.cpp" />
 		<Unit filename="src/Command/ComplexCommand.cpp" />
