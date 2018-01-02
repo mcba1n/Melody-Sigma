@@ -37,27 +37,23 @@
 		<Unit filename="include/Command.h" />
 		<Unit filename="include/Complex.h" />
 		<Unit filename="include/ComplexCommand.h" />
-		<Unit filename="include/InsertionSort.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Math.h" />
 		<Unit filename="include/Operations.h" />
 		<Unit filename="include/Poly.h" />
-		<Unit filename="include/Queue.h" />
 		<Unit filename="include/RealCommand.h" />
-		<Unit filename="include/SelectionSort.h" />
+		<Unit filename="include/Sorting.h" />
 		<Unit filename="include/TowerOfHanoi.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Command.cpp" />
 		<Unit filename="src/Complex.cpp" />
 		<Unit filename="src/ComplexCommand.cpp" />
-		<Unit filename="src/InsertionSort.cpp" />
 		<Unit filename="src/LinkedList.cpp" />
 		<Unit filename="src/Math.cpp" />
 		<Unit filename="src/Operations.cpp" />
 		<Unit filename="src/Poly.cpp" />
-		<Unit filename="src/Queue.cpp" />
 		<Unit filename="src/RealCommand.cpp" />
-		<Unit filename="src/SelectionSort.cpp" />
+		<Unit filename="src/Sorting.cpp" />
 		<Unit filename="src/TowerOfHanoi.cpp" />
 		<Extensions>
 			<code_completion />
