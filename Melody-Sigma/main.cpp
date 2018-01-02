@@ -1,11 +1,13 @@
 #include <iostream>
 #include <Command/ComplexCommand.h>
 #include <Command/RealCommand.h>
+#include <Algorithm/Sorting.h>
+#include <Algorithm/TowerOfHanoi.h>
 
 using namespace std;
 
 int main()
-{
+{   /*
     // example command
     string cmd = "fib(5)+5i";//"(2i-6)/(3i+2)";//"0+-7*10*fibonacci(11)+11i"; //"2!+5 +(e+2*PI)*10 +7^2";
     int mode = REAL;
@@ -24,7 +26,7 @@ int main()
     }
 
 
-    /*
+
     /*Queue testing
     queue<int> QUE;
     //int ele; //element
@@ -50,7 +52,6 @@ int main()
     */
     //grouped files test
     //Sorting test
-    /*
     int a[10]={40, 60, 10, 20, 45, 70, 80, 90, 25, 15};
     Sort obj;
     obj.InsertionSort(a, 10);
@@ -62,5 +63,4 @@ int main()
     //Tower of Hanoi test
     TowerOfHanoi obj2;
     obj2.tower(4, 'A', 'B', 'C');
-    */
 }

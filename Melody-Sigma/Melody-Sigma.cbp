@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Algorithm/SelectionSort.h" />
+		<Unit filename="include/Algorithm/Sorting.h" />
 		<Unit filename="include/Algorithm/TowerOfHanoi.h" />
 		<Unit filename="include/Command/Command.h" />
 		<Unit filename="include/Command/ComplexCommand.h" />
