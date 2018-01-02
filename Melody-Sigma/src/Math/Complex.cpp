@@ -1,4 +1,4 @@
-#include "Complex.h"
+#include "Math/Complex.h"
 
 Complex::Complex()
 {
@@ -44,7 +44,6 @@ std::string Complex::toString(){
     // append imag part
     sprintf(buf, "%f", imaginary);
     if (imaginary >= 0) res.push_back('+');
-    else if (imaginary < 0) res.push_back('-');
     res.append(buf);
     res.push_back('i');
 

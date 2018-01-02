@@ -1,10 +1,12 @@
 #include <iostream>
-#include "TowerOfHanoi.h"
+#include "Algorithm/TowerOfHanoi.h"
 using namespace std;
+
 TowerOfHanoi::TowerOfHanoi(){
 }
 TowerOfHanoi::~TowerOfHanoi(){
 }
+
 void TowerOfHanoi::tower(int n, char BEG, char AUX, char END){
         //here disk 1<2<3....
         if(n==1){

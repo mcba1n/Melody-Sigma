@@ -1,7 +1,7 @@
 #ifndef COMPLEXCOMMAND_H
 #define COMPLEXCOMMAND_H
 
-#include <Command.h>
+#include <Command/Command.h>
 #include <Complex.h>
 
 class ComplexCommand : public Command

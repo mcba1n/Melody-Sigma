@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1514800887 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+1514886433 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
-	<RealCommand.h>
-	<ComplexCommand.h>
+	<Command/ComplexCommand.h>
+	<Command/RealCommand.h>
 
 1512607180 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math.cpp
 	"Math.h"
@@ -18,7 +18,7 @@
 	<Math.h>
 	"Complex.h"
 
-1514802870 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
+1514885705 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command.cpp
 	"Command.h"
 
 1514799403 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command.h
@@ -105,10 +105,10 @@
 1512609528 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\queue.h
 	<iostream>
 
-1514799528 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complex.h
+1514884601 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complex.h
 	<string>
 
-1514800981 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
+1514884596 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\complex.cpp
 	"Complex.h"
 
 1512624275 d:\github\melody-sigma\melody-sigma\include\complex.h
@@ -193,4 +193,65 @@
 1514728113 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\complexcommand.h
 	<Command.h>
 	<Complex.h>
+
+1514886473 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\complexcommand.h
+	<Command/Command.h>
+	<Complex.h>
+
+1514799403 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\command.h
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<Operations.h>
+	<Math.h>
+	<ctype.h>
+	<vector>
+	<cstring>
+
+1514886492 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\realcommand.h
+	<Command/Command.h>
+
+1514886503 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command\command.cpp
+	"Command/Command.h"
+
+1514886516 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command\complexcommand.cpp
+	"Command/ComplexCommand.h"
+
+1514886521 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\command\realcommand.cpp
+	"Command/RealCommand.h"
+
+1514886694 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math\complex.cpp
+	"Math/Complex.h"
+
+1514884601 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math\complex.h
+	<string>
+
+1514886714 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math\math.cpp
+	"Math/Math.h"
+
+1512590751 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math\math.h
+
+1514886729 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math\operations.cpp
+	"Math/Operations.h"
+	"Math/Complex.h"
+
+1514886755 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math\operations.h
+	<Math/Math.h>
+	<Math/Complex.h>
+
+1514887245 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\algorithm\insertionsort.cpp
+	<iostream>
+	"Algorithm/InsertionSort.h"
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\algorithm\insertionsort.h
+	<iostream>
+
+1514887261 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\algorithm\selectionsort.cpp
+	<iostream>
+	"Algorithm/SelectionSort.h"
+
+1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\algorithm\selectionsort.h
+	<iostream>
+	"InsertionSort.h"
 

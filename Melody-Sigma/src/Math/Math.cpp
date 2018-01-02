@@ -1,5 +1,4 @@
-#include "Math.h"
-#include <iostream>
+#include "Math/Math.h"
 
 Math::Math()
 {

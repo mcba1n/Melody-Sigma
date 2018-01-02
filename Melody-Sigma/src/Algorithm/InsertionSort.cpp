@@ -1,5 +1,5 @@
 #include <iostream>
-#include "InsertionSort.h"
+#include "Algorithm/InsertionSort.h"
 using namespace std;
 
 InsertionSort::InsertionSort(){

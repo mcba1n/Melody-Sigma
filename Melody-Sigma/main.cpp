@@ -1,21 +1,23 @@
 #include <iostream>
-#include <RealCommand.h>
-#include <ComplexCommand.h>
+#include <Command/ComplexCommand.h>
+#include <Command/RealCommand.h>
 
 using namespace std;
 
 int main()
 {
-    // example command
-    string cmd = "fib(5)+5i";//"(2i-6)/(3i+2)";//"0+-7*10*fibonacci(11)+11i"; //"2!+5 +(e+2*PI)*10 +7^2";
-    int mode = COMPLEX;
+    // user command input
+    string cmd = "-5i-10.0-100+20+fib(5.0)";//"-7*10*fib(11)+11i"; //"2!+5 +(e+2*PI)*10 +7^2";
+    cout << cmd << endl;
+    int mode = REAL;
 
+    // evaluation
     if (mode == REAL) {
         RealCommand realCommand(cmd);
-        cout << "[REAL]: " << realCommand.get_result() << endl;
+        cout << "[REAL]>> " << realCommand.get_result() << endl;
     } else if (mode == COMPLEX) {
         ComplexCommand complexCommand(cmd);
-        cout << "[COMPLEX]: " << complexCommand.get_result().toString() << endl;
+        cout << "[COMPLEX]>> " << complexCommand.get_result().toString() << endl;
     } else if (mode == POLY) {
     } else if (mode == MATRIX) {
     } else {

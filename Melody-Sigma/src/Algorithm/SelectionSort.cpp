@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SelectionSort.h"
+#include "Algorithm/SelectionSort.h"
 using namespace std;
 
 SelectionSort::SelectionSort(){

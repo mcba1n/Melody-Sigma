@@ -1,5 +1,5 @@
-#include "Operations.h"
-#include "Complex.h"
+#include "Math/Operations.h"
+#include "Math/Complex.h"
 
 Operations::Operations()
 {

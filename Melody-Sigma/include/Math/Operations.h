@@ -1,8 +1,8 @@
 #ifndef OPERATIONS_H
 #define OPERATIONS_H
 
-#include <Math.h>
-#include "Complex.h"
+#include <Math/Math.h>
+#include <Math/Complex.h>
 
 class Operations : public Math
 {

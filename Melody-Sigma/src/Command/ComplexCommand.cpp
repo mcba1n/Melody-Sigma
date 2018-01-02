@@ -1,4 +1,4 @@
-#include "ComplexCommand.h"
+#include "Command/ComplexCommand.h"
 
 ComplexCommand::ComplexCommand(std::string cmd)
 {

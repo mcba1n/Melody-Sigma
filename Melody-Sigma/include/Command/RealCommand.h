@@ -1,7 +1,7 @@
 #ifndef REALCOMMAND_H
 #define REALCOMMAND_H
 
-#include <Command.h>
+#include <Command/Command.h>
 
 
 class RealCommand : public Command

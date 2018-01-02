@@ -1,4 +1,4 @@
-#include "Command.h"
+#include "Command/Command.h"
 
 Command::Command()
 {
@@ -11,11 +11,17 @@ Command::~Command()
 }
 
 Complex Command::evaluate_handler(std::string c_string) {
-    std::string cmd_funcs = evaluate_functions(c_string);
-    std::string cmd_stripped = replace_string(cmd_funcs, " ", "");
-    std::string cmd_consts = evaluate_constants(cmd_stripped);
-    std::string postfix = infix_to_postfix(cmd_consts);
-    return evaluate_postfix(postfix);
+    try {
+        std::string cmd_funcs = evaluate_functions(c_string);
+        std::string cmd_stripped = replace_string(cmd_funcs, " ", "");
+        std::string cmd_consts = evaluate_constants(cmd_stripped);
+        std::string postfix = infix_to_postfix(cmd_consts);
+        return evaluate_postfix(postfix);
+    } catch(...) {
+        std::cout << "ERROR: Could not evaluate the expression." << std::endl;
+        Complex z;
+        return z;
+    }
 }
 
 // find all function names and their arguments in a string, then return them
@@ -82,7 +88,9 @@ std::string Command::evaluate_functions(std::string c_string) {
         // make the func call
         if (args.size() == 1) args.push_back(""); // for one arg
         Complex result = function_call(myFunc->name, args[0], args[1]);
-        std::string str_result = result.toString();
+        std::string str_result = "(";
+        str_result.append(result.toString());
+        str_result.push_back(')');
 
         // replace in original string
         int str_func_len = myFunc->name.length() + myFunc->arg.length() + 2;    // add two for the brackets
@@ -144,8 +152,7 @@ Complex Command::str_to_complex(std::string complx_str) {
 }
 
 Complex Command::double_to_complex(double x) {
-    Complex z;
-    z.setReal(x);
+    Complex z(x, NULL);
     return z;
 }
 
@@ -159,7 +166,7 @@ Complex Command::evaluate_postfix(std::string postfix_string) {
         curr_char = postfix_string[i];
 
         // if the token is an operand (number), push it on the stack
-        if (is_operand(curr_char)) {
+        if (is_operand(curr_char) || curr_char == '-') {    // special case for neg at front
             int op_len = operand_length(i, postfix_string);
             std::string op_substr = postfix_string.substr(i, op_len);   // find the operand string
             i += op_len;                                                // jump past this substring in the loop
@@ -170,6 +177,7 @@ Complex Command::evaluate_postfix(std::string postfix_string) {
             int end_index = op_stack.size() - 1;
             if (op_stack.size() >= 2) {
                     // operators with two args:
+
                     Complex num1 = op_stack[end_index];
                     op_stack.pop_back();
                     Complex num2 = op_stack[end_index - 1];
@@ -180,16 +188,14 @@ Complex Command::evaluate_postfix(std::string postfix_string) {
                         val = ops.multiply(num1, num2);
                     }else if(curr_char == '/'){
                         val = ops.divide(num2, num1);
-                    }else if(curr_char == '-'){
-                        val = ops.substract(num2, num1);
                     }else if (curr_char == '^'){
-                        // assume only real numbers make it here
-                        val = double_to_complex( ops.exponent(num2.getReal(), num1.getReal()) );
+                        val = double_to_complex( ops.exponent(num2.getReal(), num1.getReal()) );    // assume only real numbers make it here
                     }
                     op_stack.push_back(val);
             }
             else if (op_stack.size() >= 1) {
                 // operators with one arg:
+
                 Complex num1 = op_stack[end_index];
                 op_stack.pop_back();
                 if(curr_char == '!') {
@@ -208,7 +214,7 @@ std::string Command::infix_to_postfix(std::string infix_str) {
     std::string postfix;
     char curr_char;
 
-    // trick to fix neg sign at the front and when no ops are used
+    // special case for a single term given as infix_str
     std::string infix_string = "0+";
     infix_string.append(infix_str);
 
@@ -219,22 +225,29 @@ std::string Command::infix_to_postfix(std::string infix_str) {
         if (curr_char == '\\') continue;
 
         // if an operator is scanned
-        else if (is_operator(curr_char)) {
+        else if (is_operator(curr_char) && i != 0) {    // ignore neg sign at front of string
             while(!op_stack.empty() && precedence(curr_char) < precedence(op_stack.back())) {
                 char c = op_stack.back();
                 postfix.push_back(c);
                 op_stack.pop_back();
             }
-            op_stack.push_back(curr_char);
+            if (curr_char == '-') op_stack.push_back('+');
+            else op_stack.push_back(curr_char);
         }
 
         // print operands as they arrive
         else if (is_operand(curr_char)) {
             int op_len = operand_length(i, infix_string);
-            std::string op_substr = infix_string.substr(i, op_len);     // find the operand string
-            std::string op_substr_delim = op_substr.append("\\");       // add delimeter to separate operands
-            postfix.append(op_substr_delim);
-            i += op_len - 1;                                            // jump past this substring in the loop
+            std::string op_substr;
+
+            // special case to fix neg sign at the front
+            if (infix_string[i - 1] == '-')
+                op_substr.push_back('-');
+
+            op_substr.append( infix_string.substr(i, op_len) ); // find the operand string
+            op_substr.push_back('\\');                          // add delimeter to separate operands
+            postfix.append(op_substr);
+            i += op_len - 1;                                    // jump past this substring in the loop
             continue;
         }
 
@@ -266,7 +279,8 @@ std::string Command::infix_to_postfix(std::string infix_str) {
 
 int Command::operand_length(int pos, std::string c_string) {
     int len = 0;
-    while (is_operand(c_string[pos]) || c_string[pos] == '.' || c_string[pos] == 'i') {
+    while (is_operand(c_string[pos]) || c_string[pos] == '.' || c_string[pos] == 'i'
+           || (c_string[pos] == '-' && len == 0)) { // special case to fix neg sign at the front
         pos++;
         len++;
     }
@@ -285,7 +299,7 @@ int Command::precedence(char op) {
         return 3;
     else if(op == '*' || op == '/')
         return 2;
-    else if(op == '+' || op == '-')
+    else if(op == '+')
         return 1;
     else
         return -1;
