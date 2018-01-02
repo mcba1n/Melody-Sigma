@@ -7,10 +7,10 @@ class LinkedList
         ~LinkedList();
         void insertbeg(int);
         void insertend(int);
-        //void insertloc(int, int);
+        void insertloc(int, int);
         void deletebeg();
         void deleteend();
-        //void deleteloc(int);
+        void deleteloc(int);
         void traverse();
 
     private:

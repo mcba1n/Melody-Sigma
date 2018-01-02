@@ -1,5 +1,5 @@
-#include<iostream>
-#include<stdlib.h>
+#include <iostream>
+#include <stdlib.h>
 #include "linkedlist.h"
 using namespace std;
 
@@ -77,7 +77,7 @@ void LinkedList::deleteend(){
         cout<<"\nDeleted element is: "<<item<<"\n";
     }
 }
-/*
+
 void LinkedList::insertloc(int item, int loc){
     struct list1 *node, *temp;
     temp=start;
@@ -86,50 +86,67 @@ void LinkedList::insertloc(int item, int loc){
     node->next=NULL;
     if(start==NULL&&loc!=1){
         cout<<"Invalid location!";
+        return;
     }
+    //loop to count the number of nodes
+    int count_=0;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        count_++;
+    }
+    if(loc>count_+1){
+        cout<<"Invalid location!";
+        return;
+    }
+    //Now for a valid location
+    temp=start;
+    if(loc==1){
+        node->next=start;
+        start=node;
+        }
     else{
-        for(int i=2; i<loc; i++){
-            temp=temp->next;
-            if(temp==NULL){
-                cout<<"Invalid loc!";
-                return;
-            }//temp will be NULL when loc>(length of the linked list+1)
+            for(int i=2; i<loc; i++){
+                temp=temp->next;
+            }
             node->next=temp->next;
             temp->next=node;
-        }//inner else close
-    }//outer else close
-}//function close
+        }
+}
 
 void LinkedList::deleteloc(int loc){
     int item;//to hold the deleted item
-    struct list *temp1, *temp;//temp1 will point to the node which is one place before the temp pointed node
+    struct list1 *temp1, *temp;//temp1 will point to the node which is one place before the temp pointed node
     temp=start;
     if(start==NULL){
         cout<<"Underflow!\n";
         return;
     }
+    //loop to count the number of nodes
+    int count_=0;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        count_++;
+    }
+    if(loc>count_){
+        cout<<"Invalid location!";
+        return;
+    }
+    temp=start;
+    for(int i=1; i<loc; i++){
+        temp1=temp;
+        temp=temp->next;
+    }
+    if(loc==1){
+        item=start->data;
+        start=start->next;
+    }
     else{
-        for(int i=1; i<loc; i++){
-            temp1=temp;
-            temp=temp->next;
-            if(temp==NULL){
-                cout<<"Invalid loc!\n";
-                return;
-            }
-        }
-        if(loc==1){
-            item=start->data;
-            start=start->next;
-        }
-        else{
-            item=temp->data;
-            temp1->next=temp->next;
-        }
+        item=temp->data;
+        temp1->next=temp->next;
+    }
         cout<<"Deleted element is:"<<item;
         free(temp);
-    }
 }
-*/
 void LinkedList::traverse(){
     struct list1 *temp;
     temp=start;

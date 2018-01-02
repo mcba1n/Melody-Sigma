@@ -4,7 +4,7 @@
 #include <Algorithm/Sorting.h>
 #include <Algorithm/TowerOfHanoi.h>
 #include <queue>
-
+#include <LinkedList.h>
 using namespace std;
 
 int main()
@@ -40,7 +40,7 @@ int main()
     TowerOfHanoi obj2;
     obj2.tower(4, 'A', 'B', 'C');
 }
-*/
+
     //Queue testing
     queue<int> QUE;
     //int ele; //element
@@ -51,7 +51,6 @@ int main()
       QUE.push(ele);
       n++;
     }while(n<=5);
-    */
     //manually pushing each element
     QUE.push(10);
     QUE.push(20);
@@ -63,4 +62,25 @@ int main()
         cout<<QUE.front()<<"  ";
         QUE.pop();
     }
+    */
+    LinkedList obj;
+    obj.insertend(10);
+    obj.insertend(20);
+    obj.insertend(60);
+    obj.insertend(100);
+    obj.insertend(110);
+    obj.insertend(150);
+    obj.traverse();
+    cout<<"\n";
+    obj.insertloc(55, 1);
+    obj.insertloc(105, 5);
+    obj.traverse();
+    cout<<"\n";
+    obj.deleteloc(1);
+    cout<<"\n";
+    obj.traverse();
+    cout<<"\n";
+    obj.deleteloc(6);
+    cout<<"\n";
+    obj.traverse();
 }
