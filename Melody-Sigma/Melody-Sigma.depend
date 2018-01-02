@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1514886433 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
+1514887710 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Command/ComplexCommand.h>
 	<Command/RealCommand.h>
@@ -195,18 +195,19 @@
 	<Command.h>
 	<Complex.h>
 
-<<<<<<< HEAD
+1514728113 D
+
 1514886473 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\complexcommand.h
 	<Command/Command.h>
 	<Complex.h>
 
-1514799403 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\command.h
+1514887729 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\command\command.h
 	<iostream>
 	<string>
 	<stdio.h>
 	<stdlib.h>
-	<Operations.h>
-	<Math.h>
+	<Math/Operations.h>
+	<Math/Math.h>
 	<ctype.h>
 	<vector>
 	<cstring>
@@ -226,8 +227,9 @@
 1514886694 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math\complex.cpp
 	"Math/Complex.h"
 
-1514884601 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math\complex.h
+1514887567 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\math\complex.h
 	<string>
+	<cstdio>
 
 1514886714 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\math\math.cpp
 	"Math/Math.h"
@@ -256,7 +258,9 @@
 1514608657 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\algorithm\selectionsort.h
 	<iostream>
 	"InsertionSort.h"
-=======
+
+1514608657 Sort.h"
+
 1514806816 d:\github\melody-sigma\melody-sigma\include\realcommand.h
 	<Command.h>
 
@@ -288,5 +292,13 @@
 1514877990 source:d:\github\melody-sigma\melody-sigma\src\algorithms\sorting.cpp
 	<iostream>
 	"../../include/algorithms/Sorting.h"
->>>>>>> 9df04d8e23226b94463c3078047ad44738918fd6
+
+1514877990 04d8e23226b94463c3078047ad44738918fd6
+
+1514887432 source:c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\src\algorithm\towerofhanoi.cpp
+	<iostream>
+	"Algorithm/TowerOfHanoi.h"
+
+1514887432 c:\users\brendon mcbain\documents\github\melody-sigma\melody-sigma\include\algorithm\towerofhanoi.h
+	<iostream>
 

@@ -5,8 +5,8 @@
 #include <string>
 #include <stdio.h>
 #include <stdlib.h>
-#include <Operations.h>
-#include <Math.h>
+#include <Math/Operations.h>
+#include <Math/Math.h>
 #include <ctype.h>
 #include <vector>
 #include <cstring>

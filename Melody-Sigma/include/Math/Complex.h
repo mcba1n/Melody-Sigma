@@ -2,6 +2,7 @@
 #define COMPLEX_H
 
 #include <string>
+#include <cstdio>
 
 class Complex
 {

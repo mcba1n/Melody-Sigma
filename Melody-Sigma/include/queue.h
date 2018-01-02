@@ -1,5 +1,6 @@
 #include<iostream>
-#define MAX 99999
+#define MAX 100
+
 class Queue
 {
     public:
