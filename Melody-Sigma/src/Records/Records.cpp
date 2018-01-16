@@ -1,7 +1,7 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
-//#include <direct.h>
+#include <direct.h>
 #include <string.h>
 #include "../../include/Records/Records.h"
 
@@ -35,10 +35,10 @@ void Record::getinfo(){
 }
 
 void Record::datawrite(){
-    //mkdir("c:\MelodySigma");
-    //mkdir("c:\MelodySigma\Records");
+    mkdir("c:/MelodySigma");
+    mkdir("c:/MelodySigma/Records");
     ofstream ifile;
-    ifile.open("records.dat", ios::out);
+    ifile.open("c:\\MelodySigma\\Records\\records.dat", ios::out);
     if(!ifile){
         cout<<"Error!";
         return;
@@ -50,7 +50,7 @@ void Record::datawrite(){
     cout<<"Success! Record saved";
 }
 void Record::display(){
-    ifstream ifile("records.dat", ios::in);
+    ifstream ifile("c:\\MelodySigma\\Records\\records.dat", ios::in);
     if(!ifile){
         cout<<"Error!";
         return;
@@ -64,5 +64,4 @@ void Record::display(){
     puts(cat);
     cout<<"\n";
     puts(desc);
-    //display(ifile);
 }

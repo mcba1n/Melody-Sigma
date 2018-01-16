@@ -56,6 +56,7 @@
 		<Unit filename="src/Math/Math.cpp" />
 		<Unit filename="src/Math/Operations.cpp" />
 		<Unit filename="src/Poly.cpp" />
+		<Unit filename="src/Records/Records.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
