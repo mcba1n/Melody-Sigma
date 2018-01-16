@@ -44,6 +44,7 @@
 		<Unit filename="include/Math/Math.h" />
 		<Unit filename="include/Math/Operations.h" />
 		<Unit filename="include/Poly.h" />
+		<Unit filename="include/Records/Records.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Algorithm/Sorting.cpp" />
 		<Unit filename="src/Algorithm/TowerOfHanoi.cpp" />

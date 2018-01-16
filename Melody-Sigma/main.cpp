@@ -5,6 +5,7 @@
 #include <Algorithm/TowerOfHanoi.h>
 #include <queue>
 #include <LinkedList.h>
+#include <Records/Records.h>
 using namespace std;
 
 int main()
@@ -62,7 +63,7 @@ int main()
         cout<<QUE.front()<<"  ";
         QUE.pop();
     }
-    */
+
     LinkedList obj;
     obj.insertend(10);
     obj.insertend(20);
@@ -83,4 +84,7 @@ int main()
     obj.deleteloc(6);
     cout<<"\n";
     obj.traverse();
+    */
+    Record obj2;
+    obj2.handler();
 }
