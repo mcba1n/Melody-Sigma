@@ -1,11 +1,12 @@
 #include <iostream>
-#include <Command/ComplexCommand.h>
+/*#include <Command/ComplexCommand.h>
 #include <Command/RealCommand.h>
 #include <Algorithm/Sorting.h>
 #include <Algorithm/TowerOfHanoi.h>
 #include <queue>
 #include <LinkedList.h>
-#include <Records/Records.h>
+#include <Records/Records.h>*/
+#include <Poly.h>
 using namespace std;
 
 int main()
@@ -84,7 +85,12 @@ int main()
     obj.deleteloc(6);
     cout<<"\n";
     obj.traverse();
-    */
+
     Record obj2;
     obj2.handler();
+    */
+    Poly obj;
+    obj.first();
+    obj.second();
+    obj.addpoly();
 }

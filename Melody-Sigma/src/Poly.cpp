@@ -40,7 +40,8 @@ void Poly::first(){
         }
         view1=start;
         while(view1!=NULL){
-        cout<<view1->coef<<"x^"<<view1->exp;
+        if(view1->coef!=0)
+            cout<<"["<<view1->coef<<"x^"<<view1->exp<<"]";
         if(i<(a-1))
             cout<<"+";
         i++;
@@ -81,7 +82,8 @@ void Poly::second(){
         }
         view2=begin1;
         while(view2!=NULL){
-        cout<<view2->coef<<"x^"<<view2->exp;
+        if(view2->coef!=0)
+            cout<<"["<<view2->coef<<"x^"<<view2->exp<<"]";
         if(i<(a-1))
             cout<<"+";
         i++;
@@ -181,8 +183,8 @@ void Poly::addpoly(){
 			}
 			temp3=add;
 			while(temp3!=NULL){
-
-				cout<<temp3->coef<<"x^"<<temp3->exp;
+                if(temp3->coef!=0)
+                    cout<<"["<<temp3->coef<<"x^"<<temp3->exp<<"]";
 				if(i<(a-1)){
                     cout<<"+";
 				}
