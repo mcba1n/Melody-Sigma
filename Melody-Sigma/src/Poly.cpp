@@ -6,6 +6,7 @@ Poly::Poly(){
     start=NULL;
     begin1=NULL;
     add=NULL;
+    global_ch=0; //global_ch=1 for subtraction operation
 }
 Poly::~Poly(){
 
@@ -53,7 +54,7 @@ void Poly::first(){
 	}
 
 void Poly::second(){
-    int cont;
+        int cont;
 		struct POLYS *node, *temp2;
 		cout<<"Insertion of second expression:\n";
 		do{
@@ -174,7 +175,10 @@ void Poly::addpoly(){
 					temp2=temp2->next;
 				}
 			}
-			cout<<"Added expression is: ";
+			if(global_ch=0)
+                cout<<"Added expression is: ";
+			else if(global_ch=1)
+                cout<<"Subtracted expression is: ";
 			temp3=add;
 			int a=0, i=0;
 			while(temp3!=NULL){
@@ -192,4 +196,14 @@ void Poly::addpoly(){
 				temp3=temp3->next;
 			}
 		}//end of outer if else
+}
+void Poly::subpoly(){
+    struct POLYS *temp=begin1;
+    while(temp!=NULL){
+        temp->coef=-temp->coef;
+        temp=temp->next;
+    }
+    global_ch=1;
+    addpoly();
+    global_ch=0;
 }

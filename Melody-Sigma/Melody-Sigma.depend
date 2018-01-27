@@ -379,7 +379,7 @@
 1514886621 d:\github\melody-sigma\melody-sigma\include\algorithm\sorting.h
 	<iostream>
 
-1517063071 source:c:\users\sai_\documents\github\melody-sigma\melody-sigma\main.cpp
+1517066300 source:c:\users\sai_\documents\github\melody-sigma\melody-sigma\main.cpp
 	<iostream>
 	<Command/RealCommand.h>
 	<Algorithm/Sorting.h>
@@ -458,12 +458,12 @@
 	"Math/Operations.h"
 	"Math/Complex.h"
 
-1517065350 source:c:\users\sai_\documents\github\melody-sigma\melody-sigma\src\poly.cpp
+1517066677 source:c:\users\sai_\documents\github\melody-sigma\melody-sigma\src\poly.cpp
 	<iostream>
 	<stdlib.h>
 	"poly.h"
 
-1517062948 c:\users\sai_\documents\github\melody-sigma\melody-sigma\include\poly.h
+1517066899 c:\users\sai_\documents\github\melody-sigma\melody-sigma\include\poly.h
 	<iostream>
 
 1517062948 source:c:\users\sai_\documents\github\melody-sigma\melody-sigma\src\records\records.cpp
