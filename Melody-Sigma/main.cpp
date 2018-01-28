@@ -92,5 +92,5 @@ int main()
     Poly obj;
     obj.first();
     obj.second();
-    obj.subpoly();
+    obj.mulpoly();
 }

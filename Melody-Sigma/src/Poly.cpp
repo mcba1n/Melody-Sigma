@@ -175,9 +175,9 @@ void Poly::addpoly(){
 					temp2=temp2->next;
 				}
 			}
-			if(global_ch=0)
+			if(global_ch==0)
                 cout<<"Added expression is: ";
-			else if(global_ch=1)
+			else if(global_ch==1)
                 cout<<"Subtracted expression is: ";
 			temp3=add;
 			int a=0, i=0;
@@ -206,4 +206,166 @@ void Poly::subpoly(){
     global_ch=1;
     addpoly();
     global_ch=0;
+}
+void Poly::mulpoly(){
+    struct POLYS *temp1=start;
+    struct POLYS *temp2=begin1;
+    struct POLYS *mul_beg;
+    mul_beg=NULL;
+    struct UN_COE_LIST *unique_coef_list;
+    unique_coef_list=NULL;
+    struct POLYS *temp4;
+    while(temp1!=NULL){
+        temp2=begin1;
+        while(temp2!=NULL){
+            struct POLYS *node;
+            node=(struct POLYS *)malloc(sizeof(struct POLYS));
+            node->coef=(temp1->coef)*(temp2->coef);
+            node->exp=(temp1->exp)+(temp2->exp);
+            node->next=NULL;
+            if(mul_beg==NULL){
+                mul_beg=node;
+            }
+            else{
+                temp4=mul_beg;
+                while(temp4->next!=NULL){
+                    temp4=temp4->next;
+                }
+                temp4->next=node;
+            }
+            temp2=temp2->next;
+        }
+        temp1=temp1->next;
+    }
+    temp4=mul_beg;
+     int indicator;
+    //loop to add the unique exp values to the unique_coef_list
+    while(temp4!=NULL){
+        struct UN_COE_LIST *node;
+        node=(struct UN_COE_LIST *)malloc(sizeof(struct POLYS));
+        node->exp=temp4->exp;
+        node->next=NULL;
+        indicator=10;
+        //10=coef not present
+        //11=coef already present
+        struct UN_COE_LIST *temp5;
+        temp5=unique_coef_list;
+        while(temp5!=NULL){
+            if(temp5->exp==node->exp){
+                indicator=11;
+            }
+            else{
+                indicator=10;
+            }
+            temp5=temp5->next;
+        }
+        if(indicator==10){
+            if(unique_coef_list==NULL){
+                unique_coef_list=node;
+            }
+            else{
+                struct UN_COE_LIST *temp6;
+                temp6=unique_coef_list;
+                while(temp6->next!=NULL){
+                    temp6=temp6->next;
+                }
+                temp6->next=node;
+            }
+        }
+
+        temp4=temp4->next;
+    }
+    //done
+    struct UN_COE_LIST *temp6;
+    temp6=unique_coef_list;
+    int a=0, i=0;
+    while(temp6!=NULL){
+        a++;
+        temp6=temp6->next;
+    }
+    temp6=unique_coef_list;
+    /*for testing unique_coef_list
+    while(temp6!=NULL){
+            cout<<"["<<temp6->exp<<"]";
+            temp6=temp6->next;
+        }
+    */
+    /*For testing mul_beg list
+    temp6=mul_beg;
+    while(temp6!=NULL){
+            if(temp6->coef!=0)
+                cout<<"["<<temp6->coef<<"x^"<<temp6->exp<<"]";
+            if(i<(a-1)){
+                cout<<"+";
+            }
+            i++;
+            temp6=temp6->next;
+        }
+        */
+    struct UN_COE_LIST *ntemp1;
+    struct POLYS *ntemp2;
+    struct POLYS *final_list=NULL;
+    ntemp1=unique_coef_list;
+    ntemp2=mul_beg;
+    int var=0;
+    while(ntemp1!=NULL){
+        ntemp2=mul_beg;
+        while(ntemp2!=NULL){
+            if(ntemp2->exp==ntemp1->exp){
+                var=var+(ntemp2->coef);
+            }
+            ntemp2=ntemp2->next;
+        }
+        struct POLYS *node;
+        node=(struct POLYS *)malloc(sizeof(struct POLYS));
+        node->coef=var;
+        node->exp=ntemp1->exp;
+        node->next=NULL;
+        struct POLYS *ptr;
+        ptr=final_list;
+        //to skip the same exp term
+        int p=0;
+        //p=0 if not present
+        //p=1 if present
+        while(ptr!=NULL){
+            if(ptr->exp==node->exp)
+                p=1;
+            ptr=ptr->next;
+        }
+        if(p==0){
+                if(final_list==NULL){
+                    final_list=node;
+                }
+                else{
+                    struct POLYS *temp7;
+                    temp7=final_list;
+                    while(temp7->next!=NULL){
+                        temp7=temp7->next;
+                    }
+                    temp7->next=node;
+                }
+        }
+        p=0;
+        var=0;
+        ntemp1=ntemp1->next;
+        }
+        struct POLYS *temp8;
+        temp8=final_list;
+        i=0;
+        a=0;
+        while(temp8!=0){
+                a++;
+                temp8=temp8->next;
+        }
+        temp8=final_list;
+        cout<<"Multiplied expression: ";
+        while(temp8!=NULL){
+                if(temp8->coef!=0)
+                    cout<<"["<<temp8->coef<<"x^"<<temp8->exp<<"]";
+                if(i<(a-1)){
+                    cout<<"+";
+                }
+                i++;
+                temp8=temp8->next;
+        }
 }
